@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3CE</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/icon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/reset.css">
 </head>
 <body>
     <div id="wrap">
         <header>
-            <a href="#"><img src="#" alt=""></a>
-            <ul class="left">
-                <li><a href="#">New In</a></li>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">Virtual Studio</a></li>
-                <li><a href="#">Brand Story</a></li>
-            </ul>
-            <div class="right">
+            <h1><a href="index.html"><img src="/images/icon/logo.png" alt=""></a></h1>
+            <nav class="gnb">
+                <ul class="menu">
+                    <li><a href="#">New In</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">Virtual Studio</a></li>
+                    <li><a href="#">Brand Story</a></li>
+                </ul>
+            </nav>
+            <div class="right_menu">
                 <div class="language">
                     <button type="button">KR<img src="./images/arrow_down_icon.png" alt=""></button>
                 </div>
@@ -29,7 +31,34 @@
             </div>   
         </header>
         <main>
-            <div id="view_main"></div>
+            <div class="swiper" id="main_swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide slide1">
+                        <div class="main_product main_product_1">
+                            <div class="product_img">
+                                <div class="main_product_img_par">
+                                    <img src="/images/main/main_product_1.png" alt="">
+                                </div>
+                                <div class="main_product_bg_par">
+                                    <img src="/images/main/main_product_bg.png" alt="">
+                                </div>
+                            </div>
+                            <div class="product_info">
+                                <div class="product_name">
+                                    <p>NEW</p>
+                                    <h2>BOUNY BLUR BALM</h2>
+                                </div>
+                                <div class="learn_more">
+                                    <a href="#">learn more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         </main>
         <footer></footer>
     </div>
