@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,232 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./styles/reset.css">
 </head>
+
 <body>
     <div id="wrap">
         <header>
-            <a href="#"><img src="#" alt=""></a>
-            <ul class="left">
-                <li><a href="#">New In</a></li>
-                <li><a href="#">Best Sellers</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">Virtual Studio</a></li>
-                <li><a href="#">Brand Story</a></li>
-            </ul>
-            <div class="right">
+            <div class="left">
+                <a href="#"><img src="#" alt=""></a>
+                <nav class="nav">
+                    <ul class="nav_list">
+                        <li><a href="#">New In</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">Virtual Studio</a></li>
+                        <li><a href="#">Brand Story</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="right_menu">
                 <div class="language">
                     <button type="button">KR<img src="./images/arrow_down_icon.png" alt=""></button>
                 </div>
                 <button type="button"><img src="./images/search_icon.png" alt=""></button>
                 <a href="#"><img src="./images/login_icon.png" alt=""></a>
                 <a href="#"><img src="./images/cart_icon.png" alt=""></a>
-            </div>   
+            </div>
         </header>
         <main>
-            <div id="view_main"></div>
+            <div class="swiper" id="main_view">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#" class="main_product_img">
+                            <img src="./images/main_product_bg.png" alt="">
+                            <img src="/images/main_product_1.png" alt="">
+                        </a>
+                        <a href="#" class="main_product_info">
+                            <p>NEW</p>  
+                            <h2>BOUNDY BLUR</h2>
+                        </a>
+                        <a href="#" class="main_product_learn_more">
+                            learn more
+                        </a>
+                    </div>
+                    <div class="swiper-slide"></div>
+                    <div class="swiper-slide"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+            <section id="category">
+                <h1 class="title">Shop by Category</h1>
+                <div class="cate_wrap">
+                    <a class="cate_eyes">
+                        <img src="" alt="">
+                        <h2>EYES</h2>
+                    </a>
+                    <a class="cate_face">
+                        <img src="" alt="">
+                        <h2>FACE</h2>
+                    </a>
+                    <a class="cate_lips">
+                        <img src="" alt="">
+                        <h2>LIPS</h2>
+                    </a>
+                    <a class="cate_essentials">
+                        <img src="" alt="">
+                        <h2>ESSENTIALS</h2>
+                    </a>
+                </div>
+            </section>
+            <section id="best_sellers">
+                <h1 class="title">3CE Best Sellers</h1>
+                <div class="best_category">
+                    <button type="button">EYES</button>
+                    <button type="button">LIPS</button>
+                    <button type="button">FACE</button>
+                    <button type="button">ESSENTIALS</button>
+                </div>
+                <div class="swiper" id="best_product_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"></div>
+                    </div>
+                </div>
+            </section>
+            <div id="youtube_banner">
+                <iframe class="youtube" width="1296" height="729" src="https://www.youtube.com/embed/DUJngHb5tJ4?autoplay=1&mute=1&loop=1&playlist=DUJngHb5tJ4&controls=0&modestbranding=1" title="[NEW] COLOR GRID EYESHADOW 😼✨ | 3CE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <section class="new_collection"> <!-- new collection -->
+                <h1 class="title">3CE New Collection</h1>
+                <div class="nc-inner">
+                    <!-- 왼쪽 비주얼 -->
+                    <div class="nc-visual">
+                        <img src="./images/3ce_new_collection_main.jpg" alt="3CE New Collection - Velvet">
+                    </div>
+                    <!-- 오른쪽 전체 -->
+                    <div class="nc-right">
+            
+                        <!-- 상품 패널들 -->
+                        <div class="nc-panels">
+                            <!-- LIP TINT (기본 오픈) -->
+                            <div class="nc-panel on" data-cat="lip-tint">
+                                <h2 class="nc-title">LIP TINT</h2>
+            
+                                <ul class="nc-products">
+                                    <li class="nc-product">
+                                        <a href="#">
+                                            <div class="thumb">
+                                                <img src="./images/lip_tint_01.jpg" alt="3CE Velvet Lip Tint Plush">
+                                            </div>
+                                            <div class="info">
+                                                <p class="name">3CE VELVET LIP TINT PLUSH</p>
+                                                <p class="opt">+20 shades</p>
+                                                <p class="price">20,000</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <!-- 나머지 상품들... -->
+                                </ul>
+            
+                                <button type="button" class="nc-cta">SHOP LIP TINT</button>
+                            </div>
+            
+                            <!-- LIPSTICK -->
+                            <div class="nc-panel" data-cat="lipstick">
+                                <h2 class="nc-title">LIPSTICK</h2>
+                                <ul class="nc-products">
+                                    <!-- 립스틱 상품들 -->
+                                </ul>
+                                <button type="button" class="nc-cta">SHOP LIPSTICK</button>
+                            </div>
+            
+                            <!-- CHEEK -->
+                            <div class="nc-panel" data-cat="cheek">
+                                <h2 class="nc-title">CHEEK</h2>
+                                <ul class="nc-products">
+                                    <!-- 치크 상품들 -->
+                                </ul>
+                                <button type="button" class="nc-cta">SHOP CHEEK</button>
+                            </div>
+            
+                            <!-- EYESHADOW -->
+                            <div class="nc-panel" data-cat="eyeshadow">
+                                <h2 class="nc-title">EYESHADOW</h2>
+                                <ul class="nc-products">
+                                    <!-- 섀도우 상품들 -->
+                                </ul>
+                                <button type="button" class="nc-cta">SHOP EYESHADOW</button>
+                            </div>
+            
+                            <!-- POWDER -->
+                            <div class="nc-panel" data-cat="powder">
+                                <h2 class="nc-title">POWDER</h2>
+                                <ul class="nc-products">
+                                    <!-- 파우더 상품들 -->
+                                </ul>
+                                <button type="button" class="nc-cta">SHOP POWDER</button>
+                            </div>
+                        </div>
+            
+                        <!-- 오른쪽 플러스 탭들 -->
+                        <div class="nc-tabs">
+                            <button class="nc-tab on" data-cat="lip-tint">
+                                <span class="plus">+</span>
+                                <span class="label">LIP TINT</span>
+                            </button>
+                            <button class="nc-tab" data-cat="lipstick">
+                                <span class="plus">+</span>
+                                <span class="label">LIPSTICK</span>
+                            </button>
+                            <button class="nc-tab" data-cat="cheek">
+                                <span class="plus">+</span>
+                                <span class="label">CHEEK</span>
+                            </button>
+                            <button class="nc-tab" data-cat="eyeshadow">
+                                <span class="plus">+</span>
+                                <span class="label">EYESHADOW</span>
+                            </button>
+                            <button class="nc-tab" data-cat="powder">
+                                <span class="plus">+</span>
+                                <span class="label">POWDER</span>
+                            </button>
+                        </div>
+            
+                    </div>
+                </div>
+            </section>
+            <section id="brand_banner">
+                <h2><em>3CE</em>는 3가지 <em>매력적인 시선</em>으로<br>당신을 <em>빛나게</em>합니다.</h2>
+                <p>3CE와 함께라면 누구나 모던한 컬러의 다양한 스펙트럼 속에서 새로운 자신을 발견할 수 있습니다.</p>
+                <span>크리에이티브하고 차별화된 느낌으로 당신의 매일을 더 패셔너블하게</span>
+                <a href="#">Brand Story</a>
+            </section>
+            <section id="with_celebs">
+                <h1 class="title">#3CE with Celebs</h1>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"></div>
+                    </div>
+                </div>
+            </section>
+            <section id="store_location">
+                <div class="store_img">
+                    <img src="" alt="">
+                </div>
+                <div class="store_info">
+                    <p>SEOUL</p>
+                    <h2>PINK SPACE HOTEL</h2>
+                    <span>37-8, Myeongdong 8-gil,<br>
+                        Jung-gu, Seoul<br>
+                        OPEN 11:00 - 22:00<br>
+                        T +82-(0)2-752-4546
+                    </span>
+                </div>
+                <button type="button">View on Google Maps</button>
+            </section>
         </main>
-        <footer></footer>
+        <footer>
+            <div class="footer_sns">
+                <a href="#"><img src="" alt=""></a>
+                <a href="#"><img src="" alt=""></a>
+                <a href="#"><img src="" alt=""></a>
+                <a href="#"><img src="" alt=""></a>
+            </div>
+            
+        </footer>
     </div>
 </body>
+
 </html>
