@@ -27,11 +27,11 @@
             </div>
             <div class="right_menu">
                 <div class="language">
-                    <button type="button">KR<img src="./images/arrow_down_icon.png" alt=""></button>
+                    <button type="button">KR<img src="./images/icon/arrow_down_icon.png" alt=""></button>
                 </div>
-                <button type="button"><img src="./images/search_icon.png" alt=""></button>
-                <a href="#"><img src="./images/login_icon.png" alt=""></a>
-                <a href="#"><img src="./images/cart_icon.png" alt=""></a>
+                <button type="button"><img src="./images/icon/search_icon.png" alt=""></button>
+                <a href="#"><img src="./images/icon/login_icon.png" alt=""></a>
+                <a href="#"><img src="./images/icon/cart_icon.png" alt=""></a>
             </div>
         </header>
         <main>
@@ -39,8 +39,8 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <a href="#" class="main_product_img">
-                            <img src="./images/main_product_bg.png" alt="">
-                            <img src="/images/main_product_1.png" alt="">
+                            <img src="./images/main/main_product_bg.png" alt="">
+                            <img src="./images/main/main_product_1.png" alt="">
                         </a>
                         <a href="#" class="main_product_info">
                             <p>NEW</p>  
@@ -80,15 +80,17 @@
             </section>
             <section id="best_sellers">
                 <h1 class="title">3CE Best Sellers</h1>
-                <div class="best_category">
-                    <button type="button">EYES</button>
-                    <button type="button">LIPS</button>
-                    <button type="button">FACE</button>
-                    <button type="button">ESSENTIALS</button>
-                </div>
-                <div class="swiper" id="best_product_swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide"></div>
+                <div class="best_wrap">
+                    <div class="best_category">
+                        <button type="button">EYES</button>
+                        <button type="button">LIPS</button>
+                        <button type="button">FACE</button>
+                        <button type="button">ESSENTIALS</button>
+                    </div>
+                    <div class="swiper" id="best_product_swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"></div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -97,25 +99,21 @@
             </div>
             <section class="new_collection"> <!-- new collection -->
                 <h1 class="title">3CE New Collection</h1>
-                <div class="nc-inner">
-                    <!-- 왼쪽 비주얼 -->
-                    <div class="nc-visual">
-                        <img src="./images/3ce_new_collection_main.jpg" alt="3CE New Collection - Velvet">
-                    </div>
-                    <!-- 오른쪽 전체 -->
-                    <div class="nc-right">
-            
-                        <!-- 상품 패널들 -->
-                        <div class="nc-panels">
-                            <!-- LIP TINT (기본 오픈) -->
-                            <div class="nc-panel on" data-cat="lip-tint">
+                <div class="nc_wrap">
+                    <div class="nc_panels">
+                        <!-- LIP TINT (기본 오픈) -->
+                        <div class="nc-panel active" data-cat="lip-tint">
+                            <!-- 왼쪽 비주얼 -->
+                            <div class="nc_visual">
+                                <img src="./images/new_collection/new_collection_lip_tint.jpg" alt="3CE New Collection - Velvet">
+                            </div>
+                            <div class="right_panel">
                                 <h2 class="nc-title">LIP TINT</h2>
-            
                                 <ul class="nc-products">
                                     <li class="nc-product">
                                         <a href="#">
                                             <div class="thumb">
-                                                <img src="./images/lip_tint_01.jpg" alt="3CE Velvet Lip Tint Plush">
+                                                <img src="./images/new_collection/lip_tint_product/new_lip_tint_1.png" alt="3CE Velvet Lip Tint Plush">
                                             </div>
                                             <div class="info">
                                                 <p class="name">3CE VELVET LIP TINT PLUSH</p>
@@ -124,41 +122,98 @@
                                             </div>
                                         </a>
                                     </li>
-                                    <!-- 나머지 상품들... -->
+                                    <li class="nc-product">
+                                        <a href="#">
+                                            <div class="thumb">
+                                                <img src="./images/new_collection/lip_tint_product/new_lip_tint_2.png" alt="3CE Velvet Lip Tint Plush">
+                                            </div>
+                                            <div class="info">
+                                                <p class="name">[3CE X MUUT] BLUR WATER TINT</p>
+                                                <p class="opt">+3 shades</p>
+                                                <p class="price">18,000</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nc-product">
+                                        <a href="#">
+                                            <div class="thumb">
+                                                <img src="./images/new_collection/lip_tint_product/new_lip_tint_3.png" alt="3CE Velvet Lip Tint Plush">
+                                            </div>
+                                            <div class="info">
+                                                <p class="name">3CE SKETCHSTICK</p>
+                                                <p class="opt">+8 shades</p>
+                                                <p class="price">13,000</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="nc-product">
+                                        <a href="#">
+                                            <div class="thumb">
+                                                <img src="./images/new_collection/lip_tint_product/new_lip_tint_4.png" alt="3CE Velvet Lip Tint Plush">
+                                            </div>
+                                            <div class="info">
+                                                <p class="name">[3CE X MUUT] VELVET LIP TINT</p>
+                                                <p class="opt">+3 shades</p>
+                                                <p class="price">18,000</p>
+                                            </div>
+                                        </a>
+                                    </li>
                                 </ul>
-            
-                                <button type="button" class="nc-cta">SHOP LIP TINT</button>
                             </div>
-            
-                            <!-- LIPSTICK -->
-                            <div class="nc-panel" data-cat="lipstick">
+                            <button type="button" class="nc-cta">SHOP LIP TINT</button>
+                        </div>
+                        <!-- LIPSTICK -->
+                        <div class="nc-panel" data-cat="lipstick">
+                            <!-- 왼쪽 비주얼 -->
+                            <div class="nc-visual">
+                                <img src="./images/new_collection/new_collection_lipstick.jpg" alt="3CE New Collection - Velvet">
+                            </div>
+                            <div class="right_panel">
                                 <h2 class="nc-title">LIPSTICK</h2>
                                 <ul class="nc-products">
                                     <!-- 립스틱 상품들 -->
                                 </ul>
                                 <button type="button" class="nc-cta">SHOP LIPSTICK</button>
                             </div>
-            
-                            <!-- CHEEK -->
-                            <div class="nc-panel" data-cat="cheek">
+                        </div>
+        
+                        <!-- CHEEK -->
+                        <div class="nc-panel" data-cat="cheek">
+                            <!-- 왼쪽 비주얼 -->
+                            <div class="nc-visual">
+                                <img src="./images/new_collection/new_collection_cheek.jpg" alt="3CE New Collection - Velvet">
+                            </div>
+                            <div class="right_panel">
                                 <h2 class="nc-title">CHEEK</h2>
                                 <ul class="nc-products">
                                     <!-- 치크 상품들 -->
                                 </ul>
                                 <button type="button" class="nc-cta">SHOP CHEEK</button>
                             </div>
-            
-                            <!-- EYESHADOW -->
-                            <div class="nc-panel" data-cat="eyeshadow">
+                        </div>
+        
+                        <!-- EYESHADOW -->
+                        <div class="nc-panel" data-cat="eyeshadow">
+                            <!-- 왼쪽 비주얼 -->
+                            <div class="nc-visual">
+                                <img src="./images/new_collection/new_collection_eyeshadow.jpg" alt="3CE New Collection - Velvet">
+                            </div> 
+                            <div class="right_panel">
                                 <h2 class="nc-title">EYESHADOW</h2>
                                 <ul class="nc-products">
                                     <!-- 섀도우 상품들 -->
                                 </ul>
                                 <button type="button" class="nc-cta">SHOP EYESHADOW</button>
                             </div>
-            
-                            <!-- POWDER -->
-                            <div class="nc-panel" data-cat="powder">
+                        </div>
+        
+                        <!-- POWDER -->
+                        <div class="nc-panel" data-cat="powder">
+                            <!-- 왼쪽 비주얼 -->
+                            <div class="nc-visual">
+                                <img src="./images/new_collection/new_collection_powder.jpg" alt="3CE New Collection - Velvet">
+                            </div>
+                            <div class="right_panel">
                                 <h2 class="nc-title">POWDER</h2>
                                 <ul class="nc-products">
                                     <!-- 파우더 상품들 -->
@@ -166,33 +221,32 @@
                                 <button type="button" class="nc-cta">SHOP POWDER</button>
                             </div>
                         </div>
-            
-                        <!-- 오른쪽 플러스 탭들 -->
-                        <div class="nc-tabs">
-                            <button class="nc-tab on" data-cat="lip-tint">
-                                <span class="plus">+</span>
-                                <span class="label">LIP TINT</span>
-                            </button>
-                            <button class="nc-tab" data-cat="lipstick">
-                                <span class="plus">+</span>
-                                <span class="label">LIPSTICK</span>
-                            </button>
-                            <button class="nc-tab" data-cat="cheek">
-                                <span class="plus">+</span>
-                                <span class="label">CHEEK</span>
-                            </button>
-                            <button class="nc-tab" data-cat="eyeshadow">
-                                <span class="plus">+</span>
-                                <span class="label">EYESHADOW</span>
-                            </button>
-                            <button class="nc-tab" data-cat="powder">
-                                <span class="plus">+</span>
-                                <span class="label">POWDER</span>
-                            </button>
-                        </div>
-            
                     </div>
+        
+                    <!-- 오른쪽 플러스 탭들 -->
+                <div class="nc-tabs">
+                    <button class="nc-tab on" data-cat="lip-tint">
+                        <span class="plus">+</span>
+                        <span class="label">LIP TINT</span>
+                    </button>
+                    <button class="nc-tab" data-cat="lipstick">
+                        <span class="plus">+</span>
+                        <span class="label">LIPSTICK</span>
+                    </button>
+                    <button class="nc-tab" data-cat="cheek">
+                        <span class="plus">+</span>
+                        <span class="label">CHEEK</span>
+                    </button>
+                    <button class="nc-tab" data-cat="eyeshadow">
+                        <span class="plus">+</span>
+                        <span class="label">EYESHADOW</span>
+                    </button>
+                    <button class="nc-tab" data-cat="powder">
+                        <span class="plus">+</span>
+                        <span class="label">POWDER</span>
+                    </button>
                 </div>
+            </div>
             </section>
             <section id="brand_banner">
                 <h2><em>3CE</em>는 3가지 <em>매력적인 시선</em>으로<br>당신을 <em>빛나게</em>합니다.</h2>
@@ -210,7 +264,10 @@
             </section>
             <section id="store_location">
                 <div class="store_img">
-                    <img src="" alt="">
+                    <img src="./images/store/store_1.jpg" alt="">
+                    <img src="./images/store/store_2.jpg" alt="">
+                    <img src="./images/store/store_3.jpg" alt="">
+                    <img src="./images/store/store_4.jpg" alt="">
                 </div>
                 <div class="store_info">
                     <p>SEOUL</p>
@@ -226,10 +283,10 @@
         </main>
         <footer>
             <div class="footer_sns">
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
+                <a href="#"><img src="/images/icon/instargram.png" alt=""></a>
+                <a href="#"><img src="/images/icon/tiktok.png" alt=""></a>
+                <a href="#"><img src="/images/icon/facebook.png" alt=""></a>
+                <a href="#"><img src="/images/icon/youtube.png" alt=""></a>
             </div>
             
         </footer>
