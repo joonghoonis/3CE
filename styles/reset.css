@@ -11,7 +11,7 @@ table,thead,tbody,tfoot,tr,td,th {
     
     
     
-    font-family:'Noto sans KR', '맑은 고딕',sans-serif;
+    font-family:'pretendard', '맑은 고딕',sans-serif;
 }
 /* 개별 태그 초기값 */
 a {text-decoration:none; color:#000;}

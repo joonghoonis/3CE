@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3CE</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/icon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <!--플러그인 필수 css cdn 연결-->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <!--플러그인 필수 JS cdn 연결-->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="./scripts/index.js" defer></script>
 </head>
-
 <body>
     <div id="wrap">
         <header>
             <div class="left">
-                <a href="#"><img src="#" alt=""></a>
+                <a href="#" class="logo"><img src="./images/icon/logo.png" alt=""></a>
                 <nav class="nav">
                     <ul class="nav_list">
                         <li><a href="#">New In</a></li>
@@ -26,9 +31,10 @@
                 </nav>
             </div>
             <div class="right_menu">
-                <div class="language">
-                    <button type="button">KR<img src="./images/icon/arrow_down_icon.png" alt=""></button>
-                </div>
+                <button type="button" class="language">
+                    <span>KR</span>
+                    <img src="./images/icon/arrow_down_icon.png" alt="">
+                </button>
                 <button type="button"><img src="./images/icon/search_icon.png" alt=""></button>
                 <a href="#"><img src="./images/icon/login_icon.png" alt=""></a>
                 <a href="#"><img src="./images/icon/cart_icon.png" alt=""></a>
@@ -37,11 +43,11 @@
         <main>
             <div class="swiper" id="main_view">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" class="main_product_img">
-                            <img src="./images/main/main_product_bg.png" alt="">
-                            <img src="./images/main/main_product_1.png" alt="">
-                        </a>
+                    <div class="swiper-slide main_swiper_1">
+                        <div class="main_product_img">
+                            <div class="main_product_bg"><img src="./images/main/main_product_bg.png" alt=""></div>
+                            <a href="#" class="main_product_thumb"><img src="./images/main/main_product_1.png" alt=""></a>
+                        </div>
                         <a href="#" class="main_product_info">
                             <p>NEW</p>  
                             <h2>BOUNDY BLUR</h2>
@@ -50,12 +56,80 @@
                             learn more
                         </a>
                     </div>
-                    <div class="swiper-slide"></div>
-                    <div class="swiper-slide"></div>
+                    <div class="swiper-slide main_swiper_2">
+                        <div class="main_product_img">
+                            <div class="main_product_bg"><img src="./images/main/main_product_bg.png" alt=""></div>
+                            <a href="#" class="main_product_thumb"><img src="./images/main/main_product_2.png" alt=""></a>
+                        </div>
+                        <a href="#" class="main_product_info">
+                            <p>NEW</p>  
+                            <h2>BOUNDY BLUR</h2>
+                        </a>
+                        <a href="#" class="main_product_learn_more">
+                            learn more
+                        </a>
+                    </div>
+                    <div class="swiper-slide main_swiper_3">
+                        <div class="main_product_img">
+                            <div class="main_product_bg"><img src="./images/main/main_product_bg.png" alt=""></div>
+                            <a href="#" class="main_product_thumb"><img src="./images/main/main_product_3.png" alt=""></a>
+                        </div>
+                        <a href="#" class="main_product_info">
+                            <p>NEW</p>  
+                            <h2>BOUNDY BLUR</h2>
+                        </a>
+                        <a href="#" class="main_product_learn_more">
+                            learn more
+                        </a>
+                    </div>
+                    <div class="swiper-slide main_swiper_4">
+                        <div class="main_product_img">
+                            <div class="main_product_bg"><img src="./images/main/main_product_bg.png" alt=""></div>
+                            <a href="#" class="main_product_thumb"><img src="./images/main/main_product_4.png" alt=""></a>
+                        </div>
+                        <a href="#" class="main_product_info">
+                            <p>NEW</p>  
+                            <h2>BOUNDY BLUR</h2>
+                        </a>
+                        <a href="#" class="main_product_learn_more">
+                            learn more
+                        </a>
+                    </div>
+                    <div class="swiper-slide main_swiper_5">
+                        <div class="main_product_img">
+                            <div class="main_product_bg"><img src="./images/main/main_product_bg.png" alt=""></div>
+                            <a href="#" class="main_product_thumb"><img src="./images/main/main_product_5.png" alt=""></a>
+                        </div>
+                        <a href="#" class="main_product_info">
+                            <p>NEW</p>  
+                            <h2>BOUNDY BLUR</h2>
+                        </a>
+                        <a href="#" class="main_product_learn_more">
+                            learn more
+                        </a>
+                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev">
+                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_272_63" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="38" height="38">
+                    <rect x="38" y="38" width="38" height="38" transform="rotate(-180 38 38)" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_272_63)">
+                    <path d="M25.3088 3.71489L27.5559 5.96204L14.518 19L27.5559 32.038L25.3088 34.2851L10.0237 19L25.3088 3.71489Z" fill="#F1F08D"/>
+                    </g>
+                    </svg>
+                </div>
+                <div class="swiper-button-next">
+                    <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_272_57" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="38" height="38">
+                    <rect width="38" height="38" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_272_57)">
+                    <path d="M12.6912 34.2851L10.4441 32.038L23.482 19L10.4441 5.96205L12.6912 3.7149L27.9763 19L12.6912 34.2851Z" fill="#F1F08D"/>
+                    </g>
+                    </svg>
+                </div>
             </div>
             <section id="category">
                 <h1 class="title">Shop by Category</h1>
@@ -95,9 +169,8 @@
                 </div>
             </section>
             <div id="youtube_banner">
-                <iframe class="youtube" width="1296" height="729" src="https://www.youtube.com/embed/DUJngHb5tJ4?autoplay=1&mute=1&loop=1&playlist=DUJngHb5tJ4&controls=0&modestbranding=1" title="[NEW] COLOR GRID EYESHADOW 😼✨ | 3CE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-            <section class="new_collection"> <!-- new collection -->
+                <iframe class="youtube" width="1920" height="1080" src="https://www.youtube.com/embed/H38plNU7LdM?autoplay=1&mute=1&loop=1&playlist=H38plNU7LdM&controls=0&modestbranding=1" title="스케치스틱과 함께라면 입술은 나만의 캔버스 🧑‍🎨 Your lips, your color playground 💋 SKETCHSTICK | 3CE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            </div>
+            <section id="new_collection"> <!-- new collection -->
                 <h1 class="title">3CE New Collection</h1>
                 <div class="nc_wrap">
                     <div class="nc_panels">
@@ -263,22 +336,25 @@
                 </div>
             </section>
             <section id="store_location">
-                <div class="store_img">
-                    <img src="./images/store/store_1.jpg" alt="">
-                    <img src="./images/store/store_2.jpg" alt="">
-                    <img src="./images/store/store_3.jpg" alt="">
-                    <img src="./images/store/store_4.jpg" alt="">
+                <h1 class="title">Store Location</h1>
+                <div class="store_wrap">
+                    <div class="store_img">
+                        <img src="./images/store/store_1.jpg" alt="">
+                        <img src="./images/store/store_2.jpg" alt="">
+                        <img src="./images/store/store_3.jpg" alt="">
+                        <img src="./images/store/store_4.jpg" alt="">
+                    </div>
+                    <div class="store_info">
+                        <p>SEOUL</p>
+                        <h2>PINK SPACE HOTEL</h2>
+                        <span>37-8, Myeongdong 8-gil,<br>
+                            Jung-gu, Seoul<br>
+                            OPEN 11:00 - 22:00<br>
+                            T +82-(0)2-752-4546
+                        </span>
+                        <button type="button">View on Google Maps</button>
+                    </div>
                 </div>
-                <div class="store_info">
-                    <p>SEOUL</p>
-                    <h2>PINK SPACE HOTEL</h2>
-                    <span>37-8, Myeongdong 8-gil,<br>
-                        Jung-gu, Seoul<br>
-                        OPEN 11:00 - 22:00<br>
-                        T +82-(0)2-752-4546
-                    </span>
-                </div>
-                <button type="button">View on Google Maps</button>
             </section>
         </main>
         <footer>

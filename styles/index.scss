@@ -1,0 +1,151 @@
+@use './common.scss' as *;
+@use './responsive.scss';
+#wrap {
+    header {
+        @include flex-row; justify-content: space-between;
+        position: fixed; top:0;right:0;left:0; z-index: 999;
+        padding:20px 40px 0;
+        .left {
+            @include flex-row; gap:30px;
+            .logo {} 
+            .nav {
+                @include flex-row;
+                align-items: center; justify-content: center;;
+                a {color:$color-white;}
+                .nav_list {@include flex-row; gap:30px;
+                }
+            }
+        }
+        .right_menu {
+            @include flex-row; gap:35px;  
+            justify-content: center; align-items: center;
+            .language {
+                span {color:$color-white}
+                @include flex-row; gap:5px; align-items: center;
+            }
+        }
+    }
+    main {
+        /* 공통 */
+        /* title */
+        .title {
+            font-size: $font-size-22;font-weight: $font-weight-medium;
+            margin-bottom: 30px;
+        }
+        #main_view {
+            .swiper-wrapper {
+                .swiper-slide {
+                    width:100%; height: 100vh;position: relative;
+                    @include bgset;
+                    .main_product_img{
+                        @include flex-col;width:250px;
+                        position: absolute; bottom:180px;left:50%;transform:translateX(-50%);
+                        img { display: block; width:100%}
+                        .main_product_bg { }
+                        .main_product_thumb { 
+                            position: absolute;
+                            bottom: 10px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            display: block;
+                            width: 80%;  
+                        }
+                    }
+                    .main_product_info {   
+                        position: absolute; bottom:120px;left:50%;transform: translateX(-50%);
+                        @include flex-col;@include flex-center; gap:5px;
+                        p {color:$color-point;font-weight: $font-weight-medium;}
+                        h2 {color:$color-point;font-weight:$font-weight-medium;font-size: $font-size-30; }
+                    }
+                    .main_product_learn_more{
+                        position: absolute; bottom:65px;left:50%;transform: translateX(-50%);
+                        border: 1px solid $color-point; border-radius: 20px;
+                        font-size:$font-size-15;color:$color-point;padding: 7px 14px; font-weight: $font-weight-medium;
+                        
+                    }
+                }
+                .main_swiper_1 {
+                    background-image: url(/images/main/main_bg_1.jpg);
+                }
+                .main_swiper_2 {
+                    background-image: url(/images/main/main_bg_2.jpg);
+                }
+                .main_swiper_3 {
+                    background-image: url(/images/main/main_bg_3.jpg);
+                }
+                .main_swiper_4 {
+                    background-image: url(/images/main/main_bg_4.jpg);
+                }
+                .main_swiper_5 {
+                    background-image: url(/images/main/main_bg_5.jpg);
+                }
+            }
+        }
+        .swiper-pagination { 
+            bottom:30px;
+            .swiper-pagination-bullet {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 1px solid $color-point;
+                background: transparent; 
+                opacity: 1;
+            }
+            .swiper-pagination-bullet-active {
+                width:10px;background:$color-point; 
+                height:10px; border-radius:50%;
+            }
+        }
+        #category {
+            padding:80px 50px;
+        }
+        #best_sellers {
+            padding:80px 50px;
+        }
+        #youtube_banner {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            .youtube{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%; 
+                transform: translate(-50%, -50%);
+                pointer-events: none; 
+            }
+        }
+        #new_collection {
+            padding:80px 50px;
+        }
+        #brand_banner {}
+        #with_celebs {}
+        #store_location {
+            padding:80px 50px;
+            .store_wrap{
+                @include flex-row; gap:50px;
+                .store_img {
+                    aspect-ratio: 2/1;
+                    @include flex-row;gap:0;
+                    img{width:100%;height: 100%;max-width: 350px}
+                }
+                .store_info {
+                    @include flex-col;justify-content:center;gap:30px;align-items: start;
+                    p {font-size:$font-size-20;font-weight: $font-weight-medium;}
+                    h2 {font-size:$font-size-30;font-weight: $font-weight-medium;white-space: nowrap;}
+                    span {}
+                    button {
+                        padding:10px 20px; background-color: $color-black;
+                        border-radius: 20px;color:$color-white;
+                        font-size: $font-size-15;
+                    }
+                }
+            }
+        }
+
+    }
+    footer {
+        background: #111;
+    }
+}
