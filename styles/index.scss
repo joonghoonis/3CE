@@ -98,9 +98,77 @@
         }
         #category {
             padding:80px 50px;
+            .cate_wrap {
+                @include flex-row;
+                width:100%;
+                .category_list {
+                    flex: 1 1 0;
+                    position: relative;
+                    overflow: hidden;
+                    height: 500px;
+                    transition: flex 0.5s ease;   // ★ flex 애니메이션
+                    img{
+                        width: 100%;height: 100%; object-fit: cover;
+                        display: block;
+                        transform: scale(1);   // 기본 크기
+                        transition: transform .5s ease, filter .3s ease;
+                        filter: brightness(0.9);
+                    }
+                    h2 {
+                        position:absolute; bottom: 30px;left: 30px; color:$color-white;
+                        font-size: $font-size-18;font-weight: $font-weight-medium;
+                        transition: font-size .3s ease, transform .3s ease;
+                        transform-origin: left bottom;
+                    }
+                }
+                &:hover .category_list img {
+                    filter: brightness(0.8);
+                    }
+                
+                    // 선택된 카드만 확대 + 밝게
+                .category_list:hover img {
+                    filter: brightness(1.05);
+                }
+                .category_list:nth-child(1):hover img {
+                    transform: scale(1.3);
+                }
+                .category_list:nth-child(4):hover img {
+                    transform: scale(1.3);
+                }
+                
+                .category_list:hover h2 {
+                    font-size: 48px;          // 글자 48px까지
+                    transform: translateY(-5px); // 살짝 위로 올리고 싶으면 (옵션)
+                }
+                &:hover .category_list {
+                    flex: 0.7 1 0;          // 전체가 살짝 좁아짐
+                }
+            
+                // 그중에서 실제로 hover된 카드만 확 넓어짐
+                &:hover .category_list:hover {
+                    flex: 1.3 1 0;          // 이 카드만 넓어짐 → 슬라이드 열리는 느낌
+                }
+            }
+            
         }
         #best_sellers {
             padding:80px 50px;
+            .best_wrap{
+                .best_category {
+                    position: relative;
+                    
+                    @include flex-col; gap:30px;
+                    button {
+                    }
+                }
+                &::after {
+                    content: ''; width: 125px;height: 1px; display: block;
+                    background-color: #000; position: absolute;
+                }
+                .best_category:nth-child(n+4)::after {
+                    display: none;
+                } 
+            }
         }
         #youtube_banner {
             position: relative;
@@ -136,9 +204,10 @@
                     h2 {font-size:$font-size-30;font-weight: $font-weight-medium;white-space: nowrap;}
                     span {}
                     button {
-                        padding:10px 20px; background-color: $color-black;
+                        padding:11px 20px; background-color: $color-black;
                         border-radius: 20px;color:$color-white;
-                        font-size: $font-size-15;
+                        font-size: $font-size-15; font-weight: $font-weight-ragular;
+                        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3); 
                     }
                 }
             }
