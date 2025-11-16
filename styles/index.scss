@@ -154,20 +154,23 @@
         #best_sellers {
             padding:80px 50px;
             .best_wrap{
+                @include flex-row; gap:80px;
                 .best_category {
-                    position: relative;
-                    
+                    background-color: blue;
                     @include flex-col; gap:30px;
+                    @include flex-center;
                     button {
+                        position: relative;
+                        &::after {
+                            content: ''; width: 125px;height: 1px; display: block;
+                            background-color: #000; position: absolute; bottom:-15px;
+                        }
+                        &:nth-child(4)::after {
+                            display: none;
+                        } 
                     }
                 }
-                &::after {
-                    content: ''; width: 125px;height: 1px; display: block;
-                    background-color: #000; position: absolute;
-                }
-                .best_category:nth-child(n+4)::after {
-                    display: none;
-                } 
+                #best_product_swiper {}
             }
         }
         #youtube_banner {

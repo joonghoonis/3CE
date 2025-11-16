@@ -206,21 +206,32 @@
 #wrap main #best_sellers {
   padding: 80px 50px;
 }
+#wrap main #best_sellers .best_wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 80px;
+}
 #wrap main #best_sellers .best_wrap .best_category {
-  position: relative;
+  background-color: blue;
   display: flex;
   flex-flow: column nowrap;
   gap: 30px;
+  justify-content: center;
+  align-items: center;
 }
-#wrap main #best_sellers .best_wrap::after {
+#wrap main #best_sellers .best_wrap .best_category button {
+  position: relative;
+}
+#wrap main #best_sellers .best_wrap .best_category button::after {
   content: "";
   width: 125px;
   height: 1px;
   display: block;
   background-color: #000;
   position: absolute;
+  bottom: -15px;
 }
-#wrap main #best_sellers .best_wrap .best_category:nth-child(n+4)::after {
+#wrap main #best_sellers .best_wrap .best_category button:nth-child(4)::after {
   display: none;
 }
 #wrap main #youtube_banner {

@@ -9,5 +9,10 @@ const mainSwiper = new Swiper("#main_view", {
         el: "#main_view .swiper-pagination",
         clickable: true,
     }
-}
-);
+});
+new Swiper("best_product_swiper", {
+    navigation: {
+        nextEl: "#best_product_swiper .swiper-button-next",
+        prevEl: "#best_product_swiper .swiper-button-prev",
+    },
+})
