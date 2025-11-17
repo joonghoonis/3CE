@@ -67,6 +67,7 @@ tabButtons.forEach((btn) => {
   });
 });
 new Swiper("#celeb_swiper", {
+    autoplay:{delay:3000},
     slidesPerView:5,
     centeredSlides: true,
     spaceBetween: 0,

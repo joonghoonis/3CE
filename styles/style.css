@@ -305,6 +305,7 @@
 #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .detail {
   font-size: 0.938rem;
   font-weight: 300;
+  color: #999;
 }
 #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .price {
   margin-top: 5px;
