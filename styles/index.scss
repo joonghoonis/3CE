@@ -101,7 +101,7 @@
         #category {
             padding:80px 50px;
             .cate_wrap {
-                @include flex-row;
+                @include flex-row;gap:5px;
                 width:100%;
                 .category_list {
                     flex: 1 1 0;
@@ -132,10 +132,10 @@
                     filter: brightness(1.05);
                 }
                 .category_list:nth-child(1):hover img {
-                    transform: scale(1.3);
+                    transform: scale(1);
                 }
                 .category_list:nth-child(4):hover img {
-                    transform: scale(1.3);
+                    transform: scale(1);
                 }
                 
                 .category_list:hover h2 {
@@ -232,7 +232,7 @@
                         .swiper-button-prev svg,.swiper-button-next svg {
                             width: 17px;
                             height: 12px;
-                            fill: currentColor;   // ✨ 핵심
+                            fill: currentColor;
                             transition: fill .3s ease, color .3s ease;
                         }
                         .swiper-button-prev:hover svg path,.swiper-button-next:hover svg path{
@@ -248,7 +248,7 @@
                             box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
                         }
                         .swiper-button-prev:hover::before,.swiper-button-next:hover::before{
-                            background:#454545;
+                            background:#222;
                         }
 
                     }
@@ -331,7 +331,8 @@
                     .swiper-slide{
                         transform: scale(0.9); opacity: 0.6;
                         transition: transform 0.4s ease,opacity 0.4s ease;
-                        /* opacity: .6 */;
+                        overflow: hidden;
+                        border-radius: 10px;
                         .video_wrap {
                             video {
                                 width:100%;height: 100%;
@@ -339,10 +340,53 @@
                                 display: block;
                                 border-radius: 10px;
                             }
+                            .celeb_thumb{
+                                position: absolute;top:0; width:110%;height:auto;
+                                border-radius: 10px; left:-5%;
+                            }
+                            .sound{
+                                opacity: 0;transition:opacity 0.3s ;
+                                position: absolute;top: 3%; right: 3%;
+                                width:50px;height:50px;
+                                .icon_sound_off{opacity: 0;}
+                                svg{
+                                    z-index: 10;position: absolute;
+                                    top:50%; right:50%;  transform: translateY(-50%) translateX(50%);
+                                    fill: currentColor;
+                                    transition: fill .3s ease, color .3s ease;
+                                }
+                            }
+                            .play{
+                                opacity: 0; transition:opacity 0.3s ease;
+                                .icon_pause_btn{opacity: 0};
+                                svg{
+                                    z-index: 20;
+                                    position: absolute; top:50%;left:50%;
+                                    transform: translateY(-50%)translateX(-50%);
+                                    fill: currentColor;
+                                    transition: fill .3s ease, color .3s ease;
+                                }
+                            }
+                            .sound:hover::before,.play:hover::before{
+                                background: #222; opacity: 1;
+                            }
+                            .sound:hover svg path,.play:hover svg path{
+                                fill:$color-white
+                            }
+                            .sound::before,.play::before{
+                                content: ''; width: 50px;height: 50px;display: block;opacity: 0.3;  z-index: 9;
+                                position: absolute; background-color: $color-white;border-radius: 25px;
+                                transition: opacity 1s ease;
+                            }
+                            .sound::before {inset: 0;}
+                            .play::before {top:50%;left:50%;transform: translateY(-50%)translateX(-50%);}
                         }
                     }
                     .swiper-slide.swiper-slide-active {
                         transform: scale(1);opacity: 1;
+                        .sound,.play {
+                            opacity: 1;
+                        }
                     }
                     
                 }
@@ -352,9 +396,33 @@
                         width:22px;height:22px;
                     }
                 }
-                .swiper-button-prev{left: 35%}
-                .swiper-button-next{right: 35%;}
-            }
+                .swiper-button-prev{left: 37%}
+                .swiper-button-next{right: 37%;}
+                .swiper-button-prev,.swiper-button-next {
+                z-index: 10;opacity: 0.5;transition:opacity 0.2s ease ;
+                &.swiper-button-disabled {opacity: 0;}
+                }
+                .swiper-button-prev:hover ,.swiper-button-next:hover {opacity: 1;}
+                .swiper-button-prev svg,.swiper-button-next svg {
+                    width: 17px;
+                    height: 12px;
+                    fill: currentColor;
+                    transition: fill .3s ease, color .3s ease;
+                }
+                .swiper-button-prev:hover svg path,.swiper-button-next:hover svg path{
+                    fill:#fff
+                }
+                .swiper-button-prev::before,.swiper-button-next::before {
+                    content: '';width:50px;height: 50px; border-radius: 50px;
+                    background:$color-white ; display: block; position: absolute;inset: 0;
+                    z-index: -2; transform: translateX(-50%)translateY(-50%); top:50%;left:50%;
+                    transition: background-color 0.3s ease;
+                    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+                }
+                .swiper-button-prev:hover::before,.swiper-button-next:hover::before{
+                    background:#222;
+                }
+                }
         }
         #store_location {
             padding:80px 50px;
