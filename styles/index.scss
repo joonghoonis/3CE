@@ -65,10 +65,10 @@
                     }
                 }
                 .main_swiper_1 {
-                    background-image: url(/images/main/main_bg_1.jpg);
+                    background-image: url(/images/main/main_bg_6.jpg);
                 }
                 .main_swiper_2 {
-                    background-image: url(/images/main/main_bg_2.jpg);
+                    background-image: url(/images/main/main_bg_7.jpg);
                 }
                 .main_swiper_3 {
                     background-image: url(/images/main/main_bg_3.jpg);
@@ -80,21 +80,23 @@
                     background-image: url(/images/main/main_bg_5.jpg);
                 }
             }
-        }
-        .swiper-pagination { 
-            bottom:30px;
-            .swiper-pagination-bullet {
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                border: 1px solid $color-point;
-                background: transparent; 
-                opacity: 1;
+            .swiper-pagination { 
+                bottom:30px;
+                .swiper-pagination-bullet {
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    border: 1px solid $color-point;
+                    background: transparent; 
+                    opacity: 1;
+                }
+                .swiper-pagination-bullet-active {
+                    width:10px;background:$color-point; 
+                    height:10px; border-radius:50%;
+                }
             }
-            .swiper-pagination-bullet-active {
-                width:10px;background:$color-point; 
-                height:10px; border-radius:50%;
-            }
+            .swiper-button-prev {}
+            .swiper-button-next {}
         }
         #category {
             padding:80px 50px;
@@ -153,24 +155,119 @@
         }
         #best_sellers {
             padding:80px 50px;
+                
             .best_wrap{
-                @include flex-row; gap:80px;
+                @include flex-row; overflow: hidden;              
                 .best_category {
-                    background-color: blue;
-                    @include flex-col; gap:30px;
+                    @include flex-col;
+                    gap:30px; 
                     @include flex-center;
-                    button {
+                    margin:0 120px 0 80px;
+                    flex: 0 0 auto;
+                    li {
                         position: relative;
                         &::after {
-                            content: ''; width: 125px;height: 1px; display: block;
-                            background-color: #000; position: absolute; bottom:-15px;
+                            content: ''; width: 130px;height: 1px; display: block;
+                            background-color: #ddd; position: absolute; bottom:-15px; left:-45px;
                         }
                         &:nth-child(4)::after {
                             display: none;
                         } 
+                        &.active button {color:#000}
+                        & button {color: #bbb; transition:color 0.25s ease;}
+                        &.active button:hover {color:#000;}
+                        & button:hover {
+                            color:#888
+                        }
                     }
                 }
-                #best_product_swiper {}
+                .best_contents {
+                    position: relative;         // 패널들 겹치게 깔아둘 거라 필요함
+                    min-height:650px;   
+                    flex: 1 1 0;
+                    .swiper {
+                        .swiper-wrapper{
+                            .swiper-slide{
+                                .thumb {
+                                    position: relative;
+                                    max-width: 445px; 
+                                    width:100%;
+                                    height: 570px;
+                                    .img_default,.img_hover {
+                                        position: absolute;
+                                        width:100%;height:100%;
+                                        transition: opacity 0.8s ease;                         
+                                    }
+                                    .num {position: absolute;top:0 ;left:0;
+                                        max-width: 80px; top:15px;left:15px;
+                                        img {width:100%;height:auto;}
+                                    }
+                                    .img_default { opacity: 1; }
+                                    .img_hover   { opacity: 0; }
+                                    &:hover .img_default {opacity: 0;}
+                                    &:hover .img_hover {opacity: 1}
+                                } 
+                                .info {
+                                    @include flex-col;gap:5px; @include flex-center;
+                                    margin-top:10px;
+                                    .name {
+                                        font-size:$font-size-17; font-weight: $font-weight-medium;
+                                    }
+                                    .detail {
+                                        font-size:$font-size-15; font-weight:$font-weight-light;
+                                    }
+                                    .price {
+                                        margin-top:5px;
+                                        font-size:$font-size-17;font-weight: $font-weight-medium;
+                                    }
+                                }
+                            }
+                        }
+                        .swiper-button-prev,.swiper-button-next {
+                            transform: scale(1) translateY(-50%);top:50%;z-index: 10;opacity: 0.5;
+                            transition:opacity 0.2s ease ;
+                            &.swiper-button-disabled {opacity: 0;}
+                        }
+                        .swiper-button-prev:hover ,.swiper-button-next:hover {opacity: 1;}
+                        .swiper-button-prev svg,.swiper-button-next svg {
+                            width: 17px;
+                            height: 12px;
+                            fill: currentColor;   // ✨ 핵심
+                            transition: fill .3s ease, color .3s ease;
+                        }
+                        .swiper-button-prev:hover svg path,.swiper-button-next:hover svg path{
+                            fill:#fff
+                        }
+                        .swiper-button-prev{left: 20px}
+                        .swiper-button-next{right:30px}
+                        .swiper-button-prev::before,.swiper-button-next::before {
+                            content: '';width:50px;height: 50px; border-radius: 50px;
+                            background:$color-white ; display: block; position: absolute;inset: 0;
+                            z-index: -2; transform: translateX(-50%)translateY(-50%); top:50%;left:50%;
+                            transition: background-color 0.3s ease;
+                            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+                        }
+                        .swiper-button-prev:hover::before,.swiper-button-next:hover::before{
+                            background:#454545;
+                        }
+
+                    }
+                        .best_panel {
+                            position: absolute;
+                            inset: 0;                 // top:0; right:0; bottom:0; left:0;
+                            opacity: 0;
+                            visibility: hidden;
+                            pointer-events: none;
+                            transition: opacity 0.4s ease;  // ✨ 여기서 부드럽게
+                        }
+                        
+                        .best_panel.active {
+                            opacity: 1;
+                            visibility: visible;
+                            pointer-events: auto;
+                            z-index: 1;
+                        }
+                }
             }
         }
         #youtube_banner {
@@ -189,9 +286,76 @@
         }
         #new_collection {
             padding:80px 50px;
+            display: none;
         }
-        #brand_banner {}
-        #with_celebs {}
+        #brand_banner {
+            height:640px;
+            position: relative;
+            padding:0 100px 0;
+            .brand_wrap{
+                @include flex-col; align-items: end; gap:30px; justify-content: center;
+                height: 100%;
+                .brand_title {
+                    @include flex-col; align-items: end;gap:8px;
+                    h2 { 
+                        font-size: $font-size-42;color: $color-white;
+                        em {color:$color-point;font-weight: $font-weight-bold;}
+                    }
+                }   
+                .brand_contents {
+                    @include flex-col; align-items: end; gap:10px;
+                    p {font-size: $font-size-18;color: $color-white}
+                    span {color:$color-white}
+                }
+                a {
+                    font-size: $font-size-15;color: $color-white; color:$color-point;
+                    padding:10px 20px ; border: 1px solid $color-point; border-radius:20px ;
+                }
+            }
+            &::before {
+                content: ''; position: absolute; inset: 0;
+                background-image: url(/images/banner/brand_banner.jpg);
+                transform: scaleX(-1);z-index: -1; 
+            }
+        }
+        #with_celebs {
+            padding: 80px 50px;
+            .celeb_id {
+                display: block;
+                margin-bottom: 8px;
+                color: #aaa;
+            }
+            #celeb_swiper {
+                .swiper-wrapper{
+                    align-items: center;
+                    .swiper-slide{
+                        transform: scale(0.9); opacity: 0.6;
+                        transition: transform 0.4s ease,opacity 0.4s ease;
+                        /* opacity: .6 */;
+                        .video_wrap {
+                            video {
+                                width:100%;height: 100%;
+                                object-fit: cover;
+                                display: block;
+                                border-radius: 10px;
+                            }
+                        }
+                    }
+                    .swiper-slide.swiper-slide-active {
+                        transform: scale(1);opacity: 1;
+                    }
+                    
+                }
+                .swiper-button-prev,.swiper-button-next {
+                    position: absolute;
+                    svg {
+                        width:22px;height:22px;
+                    }
+                }
+                .swiper-button-prev{left: 35%}
+                .swiper-button-next{right: 35%;}
+            }
+        }
         #store_location {
             padding:80px 50px;
             .store_wrap{
