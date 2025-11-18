@@ -256,9 +256,34 @@ if (typeof celebSwiper !== 'undefined') {
 document.addEventListener("click", (e) => {
     const link = e.target.closest("a");
     if (!link) return;
-  
-    // 예외 (진짜 이동하는 링크)
-    if (link.classList.contains("real-link")) return;
-  
-    e.preventDefault();
-  });
+
+// 예외 (진짜 이동하는 링크)
+if (link.classList.contains("real-link")) return;
+
+e.preventDefault();
+});
+const openMapBtn  = document.getElementById('openMapBtn');
+const mapLayer    = document.getElementById('storeMapLayer');
+const closeMapBtn = document.getElementById('closeMapBtn');
+
+if (openMapBtn && mapLayer && closeMapBtn) {
+// 열기
+openMapBtn.addEventListener('click', () => {
+mapLayer.classList.add('on');
+document.body.classList.add('no-scroll'); 
+});
+
+// 닫기 버튼
+closeMapBtn.addEventListener('click', () => {
+mapLayer.classList.remove('on');
+document.body.classList.remove('no-scroll');
+});
+
+// 어두운 배경 클릭해도 닫기
+mapLayer.addEventListener('click', (e) => {
+if (e.target === mapLayer) {
+    mapLayer.classList.remove('on');
+    document.body.classList.remove('no-scroll');
+}
+});
+}

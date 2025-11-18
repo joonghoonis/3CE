@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body.no-scroll {
+  overflow: hidden;
+}
+
 #wrap header {
   display: flex;
   flex-flow: row nowrap;
@@ -345,6 +349,7 @@
   margin-top: 10px;
 }
 #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .name {
+  color: #222;
   font-size: 1.063rem;
   font-weight: 500;
 }
@@ -354,6 +359,7 @@
   color: #999;
 }
 #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .price {
+  color: #222;
   margin-top: 5px;
   font-size: 1.063rem;
   font-weight: 500;
@@ -522,12 +528,14 @@
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel button {
   margin: 0 auto;
   align-self: flex-start;
+  transition: background-color 0.3s;
   padding: 9px 18px;
   background-color: #C40B4B;
   border-radius: 40px;
   color: #fff;
   font-size: 0.75rem;
   font-weight: 500;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel.active {
   display: flex;
@@ -560,6 +568,62 @@
   background-image: url(/images/new_collection/bg/powder_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_panels:nth-child(5) .nc-title {
+  color: #C29677;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs {
+  display: flex;
+  flex-flow: column nowrap;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab {
+  display: flex;
+  height: 100%;
+  padding: 50px 21px;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab .plus {
+  margin-bottom: 15px;
+  font-size: 1.375rem;
+  display: block;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab .label {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab.on {
+  display: none;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:hover .plus {
+  animation: hoverJump 0.6s ease-in-out 1;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(1) {
+  background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(1) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(1) .label {
+  color: #C40B4B;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(2) {
+  background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(2) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(2) .label {
+  color: #ED6455;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(3) {
+  background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(3) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(3) .label {
+  color: #DD3CC0;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(4) {
+  background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(4) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(4) .label {
+  color: #FD0101;
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(5) {
+  background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(5) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(5) .label {
   color: #C29677;
 }
 #wrap main #brand_banner {
@@ -609,6 +673,7 @@
   padding: 10px 20px;
   border: 1px solid #F1F08D;
   border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s;
 }
 #wrap main #brand_banner::before {
   content: "";
@@ -701,7 +766,7 @@
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound:hover::before, #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .play:hover::before {
   background: #222;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound:hover svg path, #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .play:hover svg path {
   fill: #fff;
@@ -716,7 +781,7 @@
   position: absolute;
   background-color: #fff;
   border-radius: 25px;
-  transition: opacity 1s ease;
+  transition: opacity 0.5s ease, background-color 0.3s;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound::before {
@@ -819,13 +884,18 @@
   align-items: start;
 }
 #wrap main #store_location .store_wrap .store_info p {
+  color: #222;
   font-size: 1.25rem;
   font-weight: 500;
 }
 #wrap main #store_location .store_wrap .store_info h2 {
+  color: #222;
   font-size: 1.875rem;
   font-weight: 500;
   white-space: nowrap;
+}
+#wrap main #store_location .store_wrap .store_info span {
+  color: #222;
 }
 #wrap main #store_location .store_wrap .store_info button {
   padding: 11px 20px;
@@ -836,8 +906,73 @@
   font-weight: 400;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
 }
+#wrap main #store_location .store_wrap .store_map_layer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6); /* 배경 어둡게 */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+  z-index: 9999;
+}
+#wrap main #store_location .store_wrap .store_map_layer.on {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.35s ease, visibility 0s;
+}
+#wrap main #store_location .store_wrap .store_map_inner {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+#wrap main #store_location .store_wrap .store_map_inner iframe {
+  display: block;
+  width: 100%;
+  height: 450px;
+  border: 0;
+}
+#wrap main #store_location .store_wrap .map_close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
 #wrap footer {
   background: #111;
+}
+
+@keyframes hoverJump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

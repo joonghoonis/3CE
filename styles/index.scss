@@ -1,5 +1,9 @@
 @use './common.scss' as *;
 @use './responsive.scss';
+body.no-scroll {
+overflow: hidden;
+}
+
 #wrap {
     header {
         @include flex-row; justify-content: space-between;
@@ -253,13 +257,14 @@
                                 .info {
                                     @include flex-col;gap:5px; @include flex-center;
                                     margin-top:10px;
-                                    .name {
+                                    .name {color: #222;
                                         font-size:$font-size-17; font-weight: $font-weight-medium;
                                     }
                                     .detail {
                                         font-size:$font-size-15; font-weight:$font-weight-light;color: #999;
                                     }
                                     .price {
+                                        color:#222;
                                         margin-top:5px;
                                         font-size:$font-size-17;font-weight: $font-weight-medium;
                                     }
@@ -395,9 +400,11 @@
                             button {
                                 margin: 0 auto;;
                                 align-self: flex-start; 
+                                transition:background-color 0.3s;
                                 padding: 9px 18px; background-color:#C40B4B ;
                                 border-radius: 40px;
                                 color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
                             }
                         }
                     }
@@ -435,6 +442,59 @@
                         }
                     }
                 }
+                .nc-tabs {
+                    @include flex-col; 
+                    writing-mode: vertical-lr;
+                    text-orientation: mixed;
+                    .nc-tab {
+                        display: flex;
+                        height: 100%;
+                        padding:50px 21px;
+                        .plus {
+                            margin-bottom:15px;font-size: $font-size-22;
+                            display: block;
+                        }
+                        .label {font-size: $font-size-18;font-weight: $font-weight-medium;}
+                    }
+                    .nc-tab.on {
+                        display: none;;
+                    }
+                    .nc-tab:hover {
+                        .plus {
+                            animation: hoverJump 0.6s ease-in-out 1;
+                        }
+                    }
+                    .nc-tab:nth-child(1) {
+                        background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
+                        .plus,.label {
+                            color:#C40B4B
+                        }
+                    }
+                    .nc-tab:nth-child(2) {
+                        background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
+                        .plus,.label {
+                            color:#ED6455;
+                        }
+                    }
+                    .nc-tab:nth-child(3) {
+                        background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
+                        .plus,.label {
+                            color:#DD3CC0;
+                        }
+                    }
+                    .nc-tab:nth-child(4) {
+                        background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+                        .plus,.label {
+                            color:#FD0101;
+                        }
+                    }
+                    .nc-tab:nth-child(5) {
+                        background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+                        .plus,.label {
+                            color:#C29677;
+                        }
+                    }
+                }
             }
         }
         #brand_banner {
@@ -459,6 +519,7 @@
                 a {
                     font-size: $font-size-15;color: $color-white; color:$color-point;
                     padding:10px 20px ; border: 1px solid $color-point; border-radius:20px ;
+                    transition: background-color 0.3s,color 0.3s;
                 }
             }
             &::before {
@@ -525,7 +586,7 @@
                                 }
                             }
                             .sound:hover::before,.play:hover::before{
-                                background: #222; opacity: .5;
+                                background: #222; opacity: .7   ;
                             }
                             .sound:hover svg path,.play:hover svg path{
                                 fill:$color-white
@@ -533,7 +594,7 @@
                             .sound::before,.play::before{
                                 content: ''; width: 50px;height: 50px;display: block;opacity: 0.3;  z-index: 9;
                                 position: absolute; background-color: $color-white;border-radius: 25px;
-                                transition: opacity 1s ease;box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3); 
+                                transition: opacity 0.5s ease,background-color 0.3s;box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3); 
                             }
                             .sound::before {inset: 0;}
                             .play::before {top:50%;left:50%;transform: translateY(-50%)translateX(-50%);}
@@ -600,21 +661,64 @@
                 }
                 .store_info {
                     @include flex-col;justify-content:center;gap:30px;align-items: start;
-                    p {font-size:$font-size-20;font-weight: $font-weight-medium;}
-                    h2 {font-size:$font-size-30;font-weight: $font-weight-medium;white-space: nowrap;}
-                    span {}
+                    p {color:#222;font-size:$font-size-20;font-weight: $font-weight-medium;}
+                    h2 {color:#222;font-size:$font-size-30;font-weight: $font-weight-medium;white-space: nowrap;}
+                    span {color: #222;}
                     button {
                         padding:11px 20px; background-color: $color-black;
                         border-radius: 20px;color:$color-white;
                         font-size: $font-size-15; font-weight: $font-weight-ragular;
                         box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3); 
                     }
+                    button:hover {
+                    }
                 }
+                .store_map_layer {
+                    position: fixed;inset: 0;display: flex;
+                    align-items: center;justify-content: center;
+                    background: rgba(0, 0, 0, 0.6); /* 배경 어둡게 */
+                    opacity: 0;visibility: hidden;
+                    pointer-events: none;transition: opacity 0.35s ease, visibility 0s linear .35s;
+                    z-index: 9999;
+                    }
+                    .store_map_layer.on {
+                    opacity: 1;visibility: visible;
+                    pointer-events: auto;transition: opacity .35s ease, visibility 0s; 
+                    }
+                    .store_map_inner {
+                    position: relative;background: #fff;
+                    border-radius: 18px;overflow: hidden;
+                    width: 90%;max-width: 800px;max-height: 80vh;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+                    }
+                    .store_map_inner iframe {
+                    display: block;width: 100%;height: 450px;
+                    border: 0;
+                    }
+                    .map_close {
+                    position: absolute;top: 12px;
+                    right: 16px;width: 32px;height: 32px;
+                    border-radius: 50%;border: 0;background: rgba(0,0,0,0.8);
+                    color: #fff;font-size: 20px;line-height: 1;
+                    display: flex;align-items: center;justify-content: center;
+                    cursor: pointer;z-index: 10;
+                    }
             }
         }
 
     }
     footer {
         background: #111;
+    }
+}
+@keyframes hoverJump {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); // 5px 위로 이동
+    }
+    100% {
+        transform: translateY(0);  // 제자리로 복귀
     }
 }
