@@ -5,13 +5,24 @@
         @include flex-row; justify-content: space-between;
         position: fixed; top:0;right:0;left:0; z-index: 999;
         padding:20px 40px 0;
+        transition: background-color 1s ease,transform 1s,opacity .5s;
+        z-index:999;
         .left {
             @include flex-row; gap:30px;
-            .logo {} 
+            .logo {
+                transition: color 0.5s,transform 1s;
+                color:$color-white;
+                svg {
+                    transition: fill .3s ease, color 1s ease;
+                }
+                svg path {
+                    fill: currentColor;
+                }
+            } 
             .nav {
                 @include flex-row;
                 align-items: center; justify-content: center;;
-                a {color:$color-white;}
+                a {color:$color-white;transition: color 0.5s ease;}
                 .nav_list {@include flex-row; gap:30px;
                 }
             }
@@ -19,10 +30,42 @@
         .right_menu {
             @include flex-row; gap:35px;  
             justify-content: center; align-items: center;
+            svg path {
+                fill: currentColor;
+            }
+            svg {
+                color:$color-white;
+                transition: fill .3s ease, color 1s ease;
+            }
             .language {
-                span {color:$color-white}
+                span {color:$color-white;transition: color 0.5s ease;}
                 @include flex-row; gap:5px; align-items: center;
             }
+        }
+        &.scrolled {
+        background:$color-white;
+        transform: translateY(-20px);
+        box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1); 
+        opacity: .7;
+            .left{
+                .logo {
+                    color: $color-black;
+                    transform:scale(0.7);
+                }
+                .nav{
+                    a {color:#222}
+                }
+            }
+            .right_menu {
+                .language{
+                    span{color:$color-black;transition: color 0.5s ease;}
+                }
+                
+                svg{color:#222}
+            }
+        }
+        &:hover {
+            opacity: 1;
         }
     }
     main {
@@ -30,7 +73,7 @@
         /* title */
         .title {
             font-size: $font-size-22;font-weight: $font-weight-medium;
-            margin-bottom: 30px;
+            margin-bottom: 30px;color: #222;
         }
         #main_view {
             .swiper-wrapper {
@@ -231,7 +274,9 @@
                         .swiper-button-prev:hover ,.swiper-button-next:hover {opacity: 1;}
                         .swiper-button-prev svg,.swiper-button-next svg {
                             width: 17px;
-                            height: 12px;
+                            height: 12px;color: #222;
+                        }
+                        .swiper-button-prev svg path ,.swiper-button-next svg path {
                             fill: currentColor;
                             transition: fill .3s ease, color .3s ease;
                         }
@@ -244,7 +289,7 @@
                             content: '';width:50px;height: 50px; border-radius: 50px;
                             background:$color-white ; display: block; position: absolute;inset: 0;
                             z-index: -2; transform: translateX(-50%)translateY(-50%); top:50%;left:50%;
-                            transition: background-color 0.3s ease;
+                            transition: background-color 0.3s ease; 
                             box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
                         }
                         .swiper-button-prev:hover::before,.swiper-button-next:hover::before{
@@ -286,7 +331,111 @@
         }
         #new_collection {
             padding:80px 50px;
-            display: none;
+            .nc_wrap {
+                display: flex;
+                .nc_panels {
+                    .nc-panel {
+                        padding:40px 45px 0;
+                        @include flex-row;@include bgset; gap:40px;
+                        display: none; max-width: 1520px;max-height:852px;
+                        .nc_visual {
+                            max-width: 800px;
+                            img {
+                                width:100%;height: auto;
+                            }
+                        }
+                        .right_panel {
+                            @include flex-col; justify-content:flex-start; gap:20px;
+                            .nc-title{
+                                margin: 0 auto;
+                                font-size: $font-size-24;
+                                font-weight: $font-weight-medium;
+                            }
+                            .nc-products {
+                                display: grid;
+                                grid-template-columns: repeat(2, 280px);
+                                grid-auto-rows: 354px;
+                                gap: 30px;
+                                .nc-product{
+                                    position: relative;
+                                    a {
+                                        .thumb {
+                                            position: relative;
+                                            max-width: 280px;
+                                            img {
+                                                width: 100%; height:auto;
+                                                position:absolute;
+                                                inset: 0;
+                                            }
+                                            .nc_thumb_bg {z-index:9}
+                                            .nc_thumb_product {z-index:100}
+                                        }
+                                        .info {
+                                            position: absolute;
+                                            bottom: 0;
+                                            @include flex-col;
+                                            .name {
+                                                margin-bottom:5px;
+                                                font-size: $font-size-17;
+                                                color: #222; font-weight: $font-weight-medium;
+                                            }
+                                            .opt {
+                                                margin-bottom: 10px;
+                                                font-size: $font-size-15;
+                                                color: #999;
+                                            }
+                                            .price {
+                                                font-size: $font-size-17;
+                                                color: #222; font-weight: $font-weight-medium;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            button {
+                                margin: 0 auto;;
+                                align-self: flex-start; 
+                                padding: 9px 18px; background-color:#C40B4B ;
+                                border-radius: 40px;
+                                color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                            }
+                        }
+                    }
+                    .nc-panel.active {
+                        display: flex;
+                    }
+                    &:nth-child(1) {
+                        background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
+                        .nc-title {
+                            color:#C40B4B;
+                        }
+                    }
+                    &:nth-child(2) {
+                        background-image: url(/images/new_collection/bg/lipstick_bg.jpg);
+                        .nc-title {
+                            color:#ED6455;
+                        }
+                    }
+                    &:nth-child(3) {
+                        background-image: url(/images/new_collection/bg/cheek_bg.jpg);
+                        .nc-title {
+                            color:#DD3CC0;
+                        }
+                    }
+                    &:nth-child(4) {
+                        background-image: url(/images/new_collection/bg/eyeshadow_bg.jpg);
+                        .nc-title {
+                            color:#FD0101;
+                        }
+                    }
+                    &:nth-child(5){
+                        background-image: url(/images/new_collection/bg/powder_bg.jpg);
+                        .nc-title {
+                            color:#C29677;
+                        }
+                    }
+                }
+            }
         }
         #brand_banner {
             height:640px;
@@ -334,41 +483,49 @@
                         overflow: hidden;
                         border-radius: 10px;
                         .video_wrap {
+                            .view {
+                                height: 650px;
+                            }
                             video {
-                                width:100%;height: 100%;
+                                position: absolute;top:0;
+                                width:100%;height:700px;
                                 object-fit: cover;
                                 display: block;
                                 border-radius: 10px;
                             }
                             .celeb_thumb{
                                 position: absolute;top:0; width:110%;height:auto;
-                                border-radius: 10px; left:-5%;
+                                border-radius: 10px; left:-5%; 
                             }
                             .sound{
                                 opacity: 0;transition:opacity 0.3s ;
                                 position: absolute;top: 3%; right: 3%;
                                 width:50px;height:50px;
-                                .icon_sound_off{opacity: 0;}
-                                svg{
-                                    z-index: 10;position: absolute;
+                                .icon_sound_on{opacity: 0;}
+                                    svg{
+                                    z-index: 10;position: absolute;color: #222;
                                     top:50%; right:50%;  transform: translateY(-50%) translateX(50%);
-                                    fill: currentColor;
-                                    transition: fill .3s ease, color .3s ease;
+                                    path {
+                                        fill: currentColor;
+                                        transition: fill .3s ease, color .3s ease;
+                                    }
                                 }
                             }
                             .play{
                                 opacity: 0; transition:opacity 0.3s ease;
                                 .icon_pause_btn{opacity: 0};
                                 svg{
-                                    z-index: 20;
+                                    z-index: 20; color: #222;
                                     position: absolute; top:50%;left:50%;
                                     transform: translateY(-50%)translateX(-50%);
-                                    fill: currentColor;
-                                    transition: fill .3s ease, color .3s ease;
+                                    path{
+                                        fill: currentColor;
+                                        transition: fill .3s ease, color .3s ease;
+                                    }
                                 }
                             }
                             .sound:hover::before,.play:hover::before{
-                                background: #222; opacity: 1;
+                                background: #222; opacity: .5;
                             }
                             .sound:hover svg path,.play:hover svg path{
                                 fill:$color-white
@@ -376,7 +533,7 @@
                             .sound::before,.play::before{
                                 content: ''; width: 50px;height: 50px;display: block;opacity: 0.3;  z-index: 9;
                                 position: absolute; background-color: $color-white;border-radius: 25px;
-                                transition: opacity 1s ease;
+                                transition: opacity 1s ease;box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3); 
                             }
                             .sound::before {inset: 0;}
                             .play::before {top:50%;left:50%;transform: translateY(-50%)translateX(-50%);}
@@ -384,10 +541,16 @@
                     }
                     .swiper-slide.swiper-slide-active {
                         transform: scale(1);opacity: 1;
+                    }
+                    .swiper-slide.swiper-slide-active:hover {
                         .sound,.play {
                             opacity: 1;
                         }
                     }
+                    .swiper-slide:not(.swiper-slide-active) .video_wrap {
+                        pointer-events: none;
+                    }
+                    
                     
                 }
                 .swiper-button-prev,.swiper-button-next {
@@ -404,19 +567,21 @@
                 }
                 .swiper-button-prev:hover ,.swiper-button-next:hover {opacity: 1;}
                 .swiper-button-prev svg,.swiper-button-next svg {
-                    width: 17px;
+                    width: 17px; color:#222;
                     height: 12px;
-                    fill: currentColor;
-                    transition: fill .3s ease, color .3s ease;
                 }
                 .swiper-button-prev:hover svg path,.swiper-button-next:hover svg path{
                     fill:#fff
+                }
+                .swiper-button-prev svg path,.swiper-button-next svg path {
+                    fill: currentColor;
+                    transition: fill .3s ease, color .3s ease;
                 }
                 .swiper-button-prev::before,.swiper-button-next::before {
                     content: '';width:50px;height: 50px; border-radius: 50px;
                     background:$color-white ; display: block; position: absolute;inset: 0;
                     z-index: -2; transform: translateX(-50%)translateY(-50%); top:50%;left:50%;
-                    transition: background-color 0.3s ease;
+                    transition: background-color .3s ease;
                     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
                 }
                 .swiper-button-prev:hover::before,.swiper-button-next:hover::before{

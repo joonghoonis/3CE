@@ -9,11 +9,23 @@
   left: 0;
   z-index: 999;
   padding: 20px 40px 0;
+  transition: background-color 1s ease, transform 1s, opacity 0.5s;
+  z-index: 999;
 }
 #wrap header .left {
   display: flex;
   flex-flow: row nowrap;
   gap: 30px;
+}
+#wrap header .left .logo {
+  transition: color 0.5s, transform 1s;
+  color: #fff;
+}
+#wrap header .left .logo svg {
+  transition: fill 0.3s ease, color 1s ease;
+}
+#wrap header .left .logo svg path {
+  fill: currentColor;
 }
 #wrap header .left .nav {
   display: flex;
@@ -23,6 +35,7 @@
 }
 #wrap header .left .nav a {
   color: #fff;
+  transition: color 0.5s ease;
 }
 #wrap header .left .nav .nav_list {
   display: flex;
@@ -36,14 +49,45 @@
   justify-content: center;
   align-items: center;
 }
+#wrap header .right_menu svg path {
+  fill: currentColor;
+}
+#wrap header .right_menu svg {
+  color: #fff;
+  transition: fill 0.3s ease, color 1s ease;
+}
 #wrap header .right_menu .language span {
   color: #fff;
+  transition: color 0.5s ease;
 }
 #wrap header .right_menu .language {
   display: flex;
   flex-flow: row nowrap;
   gap: 5px;
   align-items: center;
+}
+#wrap header.scrolled {
+  background: #fff;
+  transform: translateY(-20px);
+  box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0.7;
+}
+#wrap header.scrolled .left .logo {
+  color: #000;
+  transform: scale(0.7);
+}
+#wrap header.scrolled .left .nav a {
+  color: #222;
+}
+#wrap header.scrolled .right_menu .language span {
+  color: #000;
+  transition: color 0.5s ease;
+}
+#wrap header.scrolled .right_menu svg {
+  color: #222;
+}
+#wrap header:hover {
+  opacity: 1;
 }
 #wrap main {
   /* 공통 */
@@ -53,6 +97,7 @@
   font-size: 1.375rem;
   font-weight: 500;
   margin-bottom: 30px;
+  color: #222;
 }
 #wrap main #main_view .swiper-wrapper .swiper-slide {
   width: 100%;
@@ -329,6 +374,9 @@
 #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-button-prev svg, #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-button-next svg {
   width: 17px;
   height: 12px;
+  color: #222;
+}
+#wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-button-prev svg path, #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-button-next svg path {
   fill: currentColor;
   transition: fill 0.3s ease, color 0.3s ease;
 }
@@ -390,7 +438,129 @@
 }
 #wrap main #new_collection {
   padding: 80px 50px;
+}
+#wrap main #new_collection .nc_wrap {
+  display: flex;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel {
+  padding: 40px 45px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain */
+  background-position: center;
+  gap: 40px;
   display: none;
+  max-width: 1520px;
+  max-height: 852px;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .nc_visual {
+  max-width: 800px;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .nc_visual img {
+  width: 100%;
+  height: auto;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-title {
+  margin: 0 auto;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products {
+  display: grid;
+  grid-template-columns: repeat(2, 280px);
+  grid-auto-rows: 354px;
+  gap: 30px;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product {
+  position: relative;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb {
+  position: relative;
+  max-width: 280px;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  inset: 0;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb .nc_thumb_bg {
+  z-index: 9;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb .nc_thumb_product {
+  z-index: 100;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .info {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-flow: column nowrap;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .info .name {
+  margin-bottom: 5px;
+  font-size: 1.063rem;
+  color: #222;
+  font-weight: 500;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .info .opt {
+  margin-bottom: 10px;
+  font-size: 0.938rem;
+  color: #999;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .info .price {
+  font-size: 1.063rem;
+  color: #222;
+  font-weight: 500;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel button {
+  margin: 0 auto;
+  align-self: flex-start;
+  padding: 9px 18px;
+  background-color: #C40B4B;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel.active {
+  display: flex;
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(1) {
+  background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(1) .nc-title {
+  color: #C40B4B;
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(2) {
+  background-image: url(/images/new_collection/bg/lipstick_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(2) .nc-title {
+  color: #ED6455;
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(3) {
+  background-image: url(/images/new_collection/bg/cheek_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(3) .nc-title {
+  color: #DD3CC0;
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(4) {
+  background-image: url(/images/new_collection/bg/eyeshadow_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(4) .nc-title {
+  color: #FD0101;
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(5) {
+  background-image: url(/images/new_collection/bg/powder_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_panels:nth-child(5) .nc-title {
+  color: #C29677;
 }
 #wrap main #brand_banner {
   height: 640px;
@@ -466,9 +636,14 @@
   overflow: hidden;
   border-radius: 10px;
 }
+#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .view {
+  height: 650px;
+}
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap video {
+  position: absolute;
+  top: 0;
   width: 100%;
-  height: 100%;
+  height: 700px;
   object-fit: cover;
   display: block;
   border-radius: 10px;
@@ -490,15 +665,18 @@
   width: 50px;
   height: 50px;
 }
-#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound .icon_sound_off {
+#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound .icon_sound_on {
   opacity: 0;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound svg {
   z-index: 10;
   position: absolute;
+  color: #222;
   top: 50%;
   right: 50%;
   transform: translateY(-50%) translateX(50%);
+}
+#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound svg path {
   fill: currentColor;
   transition: fill 0.3s ease, color 0.3s ease;
 }
@@ -511,16 +689,19 @@
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .play svg {
   z-index: 20;
+  color: #222;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+}
+#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .play svg path {
   fill: currentColor;
   transition: fill 0.3s ease, color 0.3s ease;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound:hover::before, #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .play:hover::before {
   background: #222;
-  opacity: 1;
+  opacity: 0.5;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound:hover svg path, #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .play:hover svg path {
   fill: #fff;
@@ -536,6 +717,7 @@
   background-color: #fff;
   border-radius: 25px;
   transition: opacity 1s ease;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
 }
 #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide .video_wrap .sound::before {
   inset: 0;
@@ -549,8 +731,11 @@
   transform: scale(1);
   opacity: 1;
 }
-#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide.swiper-slide-active .sound, #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide.swiper-slide-active .play {
+#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide.swiper-slide-active:hover .sound, #wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide.swiper-slide-active:hover .play {
   opacity: 1;
+}
+#wrap main #with_celebs #celeb_swiper .swiper-wrapper .swiper-slide:not(.swiper-slide-active) .video_wrap {
+  pointer-events: none;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-button-prev, #wrap main #with_celebs #celeb_swiper .swiper-button-next {
   position: absolute;
@@ -578,12 +763,15 @@
 }
 #wrap main #with_celebs #celeb_swiper .swiper-button-prev svg, #wrap main #with_celebs #celeb_swiper .swiper-button-next svg {
   width: 17px;
+  color: #222;
   height: 12px;
-  fill: currentColor;
-  transition: fill 0.3s ease, color 0.3s ease;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-button-prev:hover svg path, #wrap main #with_celebs #celeb_swiper .swiper-button-next:hover svg path {
   fill: #fff;
+}
+#wrap main #with_celebs #celeb_swiper .swiper-button-prev svg path, #wrap main #with_celebs #celeb_swiper .swiper-button-next svg path {
+  fill: currentColor;
+  transition: fill 0.3s ease, color 0.3s ease;
 }
 #wrap main #with_celebs #celeb_swiper .swiper-button-prev::before, #wrap main #with_celebs #celeb_swiper .swiper-button-next::before {
   content: "";
