@@ -988,7 +988,7 @@ body.no-scroll {
 }
 #wrap main #store_location .store_wrap .store_info button {
   padding: 11px 20px;
-  background-color: #aaa;
+  background-color: #333;
   border-radius: 20px;
   color: #fff;
   font-size: 0.938rem;
@@ -997,7 +997,7 @@ body.no-scroll {
   transition: background-color 0.3s;
 }
 #wrap main #store_location .store_wrap .store_info button:hover {
-  background: #222;
+  background: #000;
 }
 #wrap main #store_location .store_wrap .store_map_layer {
   position: fixed;
