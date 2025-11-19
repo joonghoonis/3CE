@@ -13,7 +13,7 @@ body.no-scroll {
   left: 0;
   z-index: 999;
   padding: 20px 40px 0;
-  transition: background-color 1s ease, transform 1s, opacity 0.5s;
+  transition: background-color 1s ease, transform 1s, opacity 0.3s;
   z-index: 999;
 }
 #wrap header .left {
@@ -202,7 +202,6 @@ body.no-scroll {
 #wrap main #category .cate_wrap {
   display: flex;
   flex-flow: row nowrap;
-  gap: 5px;
   width: 100%;
 }
 #wrap main #category .cate_wrap .category_list {
@@ -447,18 +446,84 @@ body.no-scroll {
 }
 #wrap main #new_collection .nc_wrap {
   display: flex;
+  flex-flow: row nowrap;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs {
+  display: flex;
+  flex-flow: column nowrap;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab {
+  display: flex;
+  height: 100%;
+  padding: 50px 21px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab .plus {
+  margin-bottom: 15px;
+  font-size: 1.375rem;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab .label {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab:hover .plus {
+  animation: hoverJump 0.8s ease infinite;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab.on {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lip-tint] {
+  background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lip-tint] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lip-tint] .label {
+  color: #C40B4B;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lipstick] {
+  background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lipstick] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lipstick] .label {
+  color: #ED6455;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=cheek] {
+  background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=cheek] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=cheek] .label {
+  color: #DD3CC0;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=eyeshadow] {
+  background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=eyeshadow] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=eyeshadow] .label {
+  color: #FD0101;
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=powder] {
+  background-image: url(/images/new_collection/bg/powder_small_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=powder] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=powder] .label {
+  color: #C29677;
+}
+#wrap main #new_collection .nc_wrap .nc_panels {
+  width: 100%;
+  height: 880px;
+  position: relative;
+  overflow: hidden;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel {
   padding: 40px 45px 0;
   display: flex;
   flex-flow: row nowrap;
-  background-repeat: no-repeat;
-  background-size: cover; /* or contain */
-  background-position: center;
-  gap: 40px;
-  display: none;
-  max-width: 1520px;
-  max-height: 852px;
+  justify-content: space-between;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0.95);
+  transition: opacity 0.3s ease, transform 0.5s ease;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .nc_visual {
   max-width: 800px;
@@ -482,7 +547,7 @@ body.no-scroll {
   display: grid;
   grid-template-columns: repeat(2, 280px);
   grid-auto-rows: 354px;
-  gap: 30px;
+  gap: 30px 50px;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product {
   position: relative;
@@ -490,18 +555,35 @@ body.no-scroll {
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb {
   position: relative;
   max-width: 280px;
+  height: 280px;
+  overflow: hidden;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb img {
   width: 100%;
-  height: auto;
   position: absolute;
   inset: 0;
+  transition: opacity 0.5s;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb .nc_thumb_bg {
   z-index: 9;
+  opacity: 1;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb .nc_thumb_product {
   z-index: 100;
+  opacity: 1;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb .nc_thumb_hover {
+  opacity: 0;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb:hover .nc_thumb_bg,
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb:hover .nc_thumb_product {
+  opacity: 0;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .thumb:hover .nc_thumb_hover {
+  opacity: 1;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .info {
   position: absolute;
@@ -514,6 +596,10 @@ body.no-scroll {
   font-size: 1.063rem;
   color: #222;
   font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 280px;
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products .nc-product a .info .opt {
   margin-bottom: 10px;
@@ -525,10 +611,31 @@ body.no-scroll {
   color: #222;
   font-weight: 500;
 }
-#wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel button {
+#wrap main #new_collection .nc_wrap .nc_panels {
+  /* 방향 정보만 담당 */
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel.dir-left {
+  transform-origin: left center;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel.dir-right {
+  transform-origin: right center;
+}
+#wrap main #new_collection .nc_wrap .nc_panels {
+  /* 보이는지 여부는 여기서만 결정 */
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scaleX(1);
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(1) {
+  background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(1) .nc-title {
+  color: #C40B4B;
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(1) button {
   margin: 0 auto;
-  align-self: flex-start;
-  transition: background-color 0.3s;
   padding: 9px 18px;
   background-color: #C40B4B;
   border-radius: 40px;
@@ -537,94 +644,76 @@ body.no-scroll {
   font-weight: 500;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-#wrap main #new_collection .nc_wrap .nc_panels .nc-panel.active {
-  display: flex;
-}
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(1) {
-  background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
-}
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(1) .nc-title {
-  color: #C40B4B;
-}
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(2) {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(2) {
   background-image: url(/images/new_collection/bg/lipstick_bg.jpg);
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(2) .nc-title {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(2) .nc-title {
   color: #ED6455;
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(3) {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(2) button {
+  margin: 0 auto;
+  padding: 9px 18px;
+  background-color: #ED6455;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(3) {
   background-image: url(/images/new_collection/bg/cheek_bg.jpg);
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(3) .nc-title {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(3) .nc-title {
   color: #DD3CC0;
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(4) {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(3) button {
+  margin: 0 auto;
+  padding: 9px 18px;
+  background-color: #DD3CC0;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(4) {
   background-image: url(/images/new_collection/bg/eyeshadow_bg.jpg);
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(4) .nc-title {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(4) .nc-title {
   color: #FD0101;
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(5) {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(4) button {
+  margin: 0 auto;
+  padding: 9px 18px;
+  background-color: #FD0101;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(5) {
   background-image: url(/images/new_collection/bg/powder_bg.jpg);
 }
-#wrap main #new_collection .nc_wrap .nc_panels:nth-child(5) .nc-title {
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(5) .nc-title {
   color: #C29677;
 }
-#wrap main #new_collection .nc_wrap .nc-tabs {
-  display: flex;
-  flex-flow: column nowrap;
-  writing-mode: vertical-lr;
-  text-orientation: mixed;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab {
-  display: flex;
-  height: 100%;
-  padding: 50px 21px;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab .plus {
-  margin-bottom: 15px;
-  font-size: 1.375rem;
-  display: block;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab .label {
-  font-size: 1.125rem;
+#wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(5) button {
+  margin: 0 auto;
+  padding: 9px 18px;
+  background-color: #C29677;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 0.75rem;
   font-weight: 500;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab.on {
-  display: none;
+#wrap main #new_collection .nc_wrap .nc_panels .nc-cta {
+  opacity: 0.7;
+  transition: opacity 0.3s;
 }
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:hover .plus {
-  animation: hoverJump 0.6s ease-in-out 1;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(1) {
-  background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(1) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(1) .label {
-  color: #C40B4B;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(2) {
-  background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(2) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(2) .label {
-  color: #ED6455;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(3) {
-  background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(3) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(3) .label {
-  color: #DD3CC0;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(4) {
-  background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(4) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(4) .label {
-  color: #FD0101;
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(5) {
-  background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
-}
-#wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(5) .plus, #wrap main #new_collection .nc_wrap .nc-tabs .nc-tab:nth-child(5) .label {
-  color: #C29677;
+#wrap main #new_collection .nc_wrap .nc_panels .nc-cta:hover {
+  opacity: 1;
 }
 #wrap main #brand_banner {
   height: 640px;
@@ -899,12 +988,16 @@ body.no-scroll {
 }
 #wrap main #store_location .store_wrap .store_info button {
   padding: 11px 20px;
-  background-color: #000;
+  background-color: #aaa;
   border-radius: 20px;
   color: #fff;
   font-size: 0.938rem;
-  font-weight: 400;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+#wrap main #store_location .store_wrap .store_info button:hover {
+  background: #222;
 }
 #wrap main #store_location .store_wrap .store_map_layer {
   position: fixed;
@@ -960,15 +1053,50 @@ body.no-scroll {
   z-index: 10;
 }
 #wrap footer {
+  padding: 30px 0;
   background: #111;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#wrap footer .footer_sns {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+#wrap footer .footer_info {
+  margin-bottom: 40px;
+}
+#wrap footer .footer_info p:nth-child(1) {
+  color: #fff;
+  margin-bottom: 10px;
+}
+#wrap footer .footer_info p:nth-child(2) {
+  margin-bottom: 10px;
+}
+#wrap footer .footer_info p {
+  color: #ddd;
+  text-align: center;
+}
+#wrap footer .footer_logo {
+  fill: #fff;
+}
+#wrap footer .footer_logo svg {
+  width: 178px;
+  height: auto;
 }
 
 @keyframes hoverJump {
   0% {
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-10px);
+  33% {
+    transform: translateY(-18px);
+  }
+  66% {
+    transform: translateY(6px);
   }
   100% {
     transform: translateY(0);

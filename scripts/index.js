@@ -77,9 +77,110 @@ tabButtons.forEach((btn) => {
     });
   });
 });
-/* celeb */
+/* ====================================new collection================================== */
+document.addEventListener('DOMContentLoaded', () => {
+const section = document.querySelector('#new_collection');
+if (!section) return;
+
+const leftTabsWrap  = section.querySelector('.nc_tabs--left');
+const rightTabsWrap = section.querySelector('.nc_tabs--right');
+const panels        = Array.from(section.querySelectorAll('.nc_panels .nc-panel'));
+const allTabs       = Array.from(section.querySelectorAll('.nc_tabs .nc-tab'));
+
+// 카테고리 순서 (왼쪽/오른쪽 쌓이는 기준)
+const categoryOrder = ['lip-tint', 'lipstick', 'cheek', 'eyeshadow', 'powder'];
+
+// data-cat으로 탭/패널 맵
+const tabMap   = {};
+const panelMap = {};
+
+categoryOrder.forEach(cat => {
+    const tab   = allTabs.find(t => t.dataset.cat === cat);
+    const panel = panels.find(p => p.dataset.cat === cat);
+    if (tab)   tabMap[cat]   = tab;
+    if (panel) panelMap[cat] = panel;
+});
+
+let currentCat = 'lip-tint'; // 초기 활성 카테고리
+
+// 탭 위치/표시 업데이트
+function updateTabs(activeCat) {
+    const activeIndex = categoryOrder.indexOf(activeCat);
+
+    categoryOrder.forEach((cat, idx) => {
+    const tab = tabMap[cat];
+    if (!tab) return;
+
+    // 활성 상태 초기화 (.on 제거)
+    tab.classList.remove('on');
+
+    // active 전에 있는 카테고리 → 왼쪽으로 접혀 쌓임
+    if (idx < activeIndex) {
+        leftTabsWrap.appendChild(tab);
+    }
+    // active 뒤에 있는 카테고리 → 오른쪽에 남음
+    else if (idx > activeIndex) {
+        rightTabsWrap.appendChild(tab);
+    }
+    // active 본인
+    else if (idx === activeIndex) {
+        // 어디에 있든 상관없고, 그냥 투명 처리만 한다.
+        // (필요하면 특정 위치에 appendChild 해도 됨)
+    }
+    });
+
+    // 마지막에 활성 탭에 .on 붙여서 opacity 0 (페이드 아웃)
+    const activeTab = tabMap[activeCat];
+    if (activeTab) {
+    activeTab.classList.add('on');
+    }
+}
+
+// 패널 애니메이션 (왼쪽/오른쪽에서 펼쳐져 나오는 느낌)
+function updatePanels(activeCat, fromSide) {
+    Object.values(panelMap).forEach(panel => {
+    panel.classList.remove('active', 'dir-left', 'dir-right');
+    });
+
+    const panel = panelMap[activeCat];
+    if (!panel) return;
+
+    // 방향 정보 세팅
+    if (fromSide === 'left') {
+    panel.classList.add('dir-left');
+    } else {
+    panel.classList.add('dir-right');
+    }
+
+    // 리플로우 한 번 줘서 트랜지션 확실히 태우기
+    void panel.offsetWidth;
+
+    panel.classList.add('active');
+}
+
+function setActiveCategory(nextCat, fromSide) {
+    if (!categoryOrder.includes(nextCat)) return;
+    currentCat = nextCat;
+
+    updateTabs(currentCat);
+    updatePanels(currentCat, fromSide || 'right');
+}
+
+// 탭 클릭 이벤트
+Object.entries(tabMap).forEach(([cat, tab]) => {
+    tab.addEventListener('click', () => {
+    // 이 탭이 어느 쪽 컨테이너에 있는지 보고 방향 결정
+    const fromSide = tab.closest('.nc_tabs--left') ? 'left' : 'right';
+    setActiveCategory(cat, fromSide);
+    });
+});
+
+// 초기 상태: lip-tint가 활성, 오른쪽에서 펼쳐지는 느낌으로 시작
+setActiveCategory('lip-tint', 'right');
+});
+/* ====================================celeb============================================== */
 const celebSwiper = new Swiper("#celeb_swiper", {
-    autoplay:{delay:10000},
+    autoplay:{delay:6000},
     slidesPerView:5,
     centeredSlides: true,
     spaceBetween: 0,

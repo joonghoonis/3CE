@@ -9,7 +9,7 @@ overflow: hidden;
         @include flex-row; justify-content: space-between;
         position: fixed; top:0;right:0;left:0; z-index: 999;
         padding:20px 40px 0;
-        transition: background-color 1s ease,transform 1s,opacity .5s;
+        transition: background-color 1s ease,transform 1s,opacity .3s;
         z-index:999;
         .left {
             @include flex-row; gap:30px;
@@ -148,7 +148,7 @@ overflow: hidden;
         #category {
             padding:80px 50px;
             .cate_wrap {
-                @include flex-row;gap:5px;
+                @include flex-row;
                 width:100%;
                 .category_list {
                     flex: 1 1 0;
@@ -337,12 +337,69 @@ overflow: hidden;
         #new_collection {
             padding:80px 50px;
             .nc_wrap {
-                display: flex;
+                @include flex-row;
+                .nc_tabs {
+                    @include flex-col;
+                    writing-mode: vertical-lr;
+                    text-orientation: mixed;
+                    .nc-tab {
+                        display: flex;
+                        height: 100%;
+                        padding:50px 21px;
+                        opacity: 1;
+                        transition: opacity 0.3s ease; // 자연스럽게
+                        .plus {
+                            margin-bottom:15px;font-size: $font-size-22;
+                        }
+                        .label {font-size: $font-size-18;font-weight: $font-weight-medium;
+                        }
+                        &:hover {
+                            .plus {
+                                animation: hoverJump .8s ease infinite;
+                            }
+                        }
+                    }
+                    .nc-tab.on {
+                        opacity: 0;
+                        pointer-events: none; // 클릭 안 되게
+                        display: none;
+                    }
+                    .nc-tab[data-cat="lip-tint"] {
+                        background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
+                        .plus, .label { color:#C40B4B; }
+                    }
+                    .nc-tab[data-cat="lipstick"] {
+                        background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
+                        .plus, .label { color:#ED6455; }
+                    }
+                    .nc-tab[data-cat="cheek"] {
+                        background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
+                        .plus, .label { color:#DD3CC0; }
+                    }
+                    .nc-tab[data-cat="eyeshadow"] {
+                        background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+                        .plus, .label { color:#FD0101; }
+                    }
+                    .nc-tab[data-cat="powder"] {
+                        background-image: url(/images/new_collection/bg/powder_small_bg.jpg);
+                        .plus, .label { color:#C29677; }
+                    }
+                }
+                .nc_tabs--left {}
+                .nc_tabs--right {}
                 .nc_panels {
-                    .nc-panel {
+                    width:100%;height:880px ;
+                    position: relative;
+                    overflow: hidden; // 애니메이션 중 삐져나오는 거 숨김
+                    .nc-panel { 
                         padding:40px 45px 0;
-                        @include flex-row;@include bgset; gap:40px;
-                        display: none; max-width: 1520px;max-height:852px;
+                        @include flex-row; justify-content: space-between;
+                        position: absolute;
+                        inset: 0;
+                        opacity: 0;
+                        pointer-events: none;
+                        transform: scaleX(.95);
+                        transition: opacity .3s ease, transform .5s ease;
                         .nc_visual {
                             max-width: 800px;
                             img {
@@ -355,25 +412,35 @@ overflow: hidden;
                                 margin: 0 auto;
                                 font-size: $font-size-24;
                                 font-weight: $font-weight-medium;
-                            }
+                                }
                             .nc-products {
                                 display: grid;
                                 grid-template-columns: repeat(2, 280px);
                                 grid-auto-rows: 354px;
-                                gap: 30px;
+                                gap: 30px 50px;  
                                 .nc-product{
                                     position: relative;
                                     a {
                                         .thumb {
                                             position: relative;
-                                            max-width: 280px;
+                                            max-width: 280px; height: 280px;overflow:hidden;
                                             img {
-                                                width: 100%; height:auto;
+                                                width: 100%;
                                                 position:absolute;
                                                 inset: 0;
+                                                transition: opacity 0.5s;
+                                                height: 100%; 
+                                                object-fit: cover;     
+                                                object-position: center;
                                             }
-                                            .nc_thumb_bg {z-index:9}
-                                            .nc_thumb_product {z-index:100}
+                                            .nc_thumb_bg {z-index:9;opacity: 1;}
+                                            .nc_thumb_product {z-index:100;opacity: 1;}
+                                            .nc_thumb_hover {opacity: 0;}
+                                            &:hover {
+                                                .nc_thumb_bg,
+                                                .nc_thumb_product {opacity:0}
+                                                .nc_thumb_hover {opacity:1}
+                                            }
                                         }
                                         .info {
                                             position: absolute;
@@ -383,6 +450,10 @@ overflow: hidden;
                                                 margin-bottom:5px;
                                                 font-size: $font-size-17;
                                                 color: #222; font-weight: $font-weight-medium;
+                                                overflow: hidden;
+                                                white-space: nowrap;
+                                                text-overflow: ellipsis;
+                                                max-width:280px;
                                             }
                                             .opt {
                                                 margin-bottom: 10px;
@@ -397,103 +468,86 @@ overflow: hidden;
                                     }
                                 }
                             }
-                            button {
-                                margin: 0 auto;;
-                                align-self: flex-start; 
-                                transition:background-color 0.3s;
-                                padding: 9px 18px; background-color:#C40B4B ;
-                                border-radius: 40px;
-                                color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
-                                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-                            }
                         }
                     }
+                    
+                    /* 방향 정보만 담당 */
+                    .nc-panel.dir-left  { transform-origin: left  center; }
+                    .nc-panel.dir-right { transform-origin: right center; }
+                    
+                    /* 보이는지 여부는 여기서만 결정 */
                     .nc-panel.active {
-                        display: flex;
+                    opacity: 1;
+                    pointer-events: auto;
+                    transform: scaleX(1);
                     }
-                    &:nth-child(1) {
+                    .nc-panel:nth-child(1) {
                         background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
                         .nc-title {
                             color:#C40B4B;
                         }
+                        button {
+                            margin: 0 auto;;
+                            padding: 9px 18px; background-color:#C40B4B;
+                            border-radius: 40px;
+                            color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+                        }  
                     }
-                    &:nth-child(2) {
+                    .nc-panel:nth-child(2) {
                         background-image: url(/images/new_collection/bg/lipstick_bg.jpg);
                         .nc-title {
                             color:#ED6455;
                         }
+                        button {
+                            margin: 0 auto;;
+                            padding: 9px 18px; background-color:#ED6455;
+                            border-radius: 40px;
+                            color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+                        }  
                     }
-                    &:nth-child(3) {
+                    .nc-panel:nth-child(3) {
                         background-image: url(/images/new_collection/bg/cheek_bg.jpg);
                         .nc-title {
                             color:#DD3CC0;
                         }
+                        button {
+                            margin: 0 auto;;
+                            padding: 9px 18px; background-color:#DD3CC0;
+                            border-radius: 40px;
+                            color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+                        }                        
                     }
-                    &:nth-child(4) {
+                    .nc-panel:nth-child(4) {
                         background-image: url(/images/new_collection/bg/eyeshadow_bg.jpg);
                         .nc-title {
                             color:#FD0101;
                         }
+                        button {
+                            margin: 0 auto;;
+                            padding: 9px 18px; background-color:#FD0101;
+                            border-radius: 40px;
+                            color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+                        }
                     }
-                    &:nth-child(5){
+                    .nc-panel:nth-child(5){
                         background-image: url(/images/new_collection/bg/powder_bg.jpg);
                         .nc-title {
                             color:#C29677;
                         }
-                    }
-                }
-                .nc-tabs {
-                    @include flex-col; 
-                    writing-mode: vertical-lr;
-                    text-orientation: mixed;
-                    .nc-tab {
-                        display: flex;
-                        height: 100%;
-                        padding:50px 21px;
-                        .plus {
-                            margin-bottom:15px;font-size: $font-size-22;
-                            display: block;
-                        }
-                        .label {font-size: $font-size-18;font-weight: $font-weight-medium;}
-                    }
-                    .nc-tab.on {
-                        display: none;;
-                    }
-                    .nc-tab:hover {
-                        .plus {
-                            animation: hoverJump 0.6s ease-in-out 1;
+                        button {
+                            margin: 0 auto;;
+                            padding: 9px 18px; background-color:#C29677;;
+                            border-radius: 40px;
+                            color: $color-white; font-size: $font-size-12;font-weight: $font-weight-medium;
+                            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
                         }
                     }
-                    .nc-tab:nth-child(1) {
-                        background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
-                        .plus,.label {
-                            color:#C40B4B
-                        }
-                    }
-                    .nc-tab:nth-child(2) {
-                        background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
-                        .plus,.label {
-                            color:#ED6455;
-                        }
-                    }
-                    .nc-tab:nth-child(3) {
-                        background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
-                        .plus,.label {
-                            color:#DD3CC0;
-                        }
-                    }
-                    .nc-tab:nth-child(4) {
-                        background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
-                        .plus,.label {
-                            color:#FD0101;
-                        }
-                    }
-                    .nc-tab:nth-child(5) {
-                        background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
-                        .plus,.label {
-                            color:#C29677;
-                        }
-                    }
+                    .nc-cta {opacity: 0.7; transition: opacity 0.3s;}
+                    .nc-cta:hover {opacity: 1;}
                 }
             }
         }
@@ -665,12 +719,14 @@ overflow: hidden;
                     h2 {color:#222;font-size:$font-size-30;font-weight: $font-weight-medium;white-space: nowrap;}
                     span {color: #222;}
                     button {
-                        padding:11px 20px; background-color: $color-black;
-                        border-radius: 20px;color:$color-white;
-                        font-size: $font-size-15; font-weight: $font-weight-ragular;
-                        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3); 
+                        padding:11px 20px; background-color: #aaa;
+                        border-radius: 20px;color:#fff; 
+                        font-size: $font-size-15; font-weight: $font-weight-medium;
+                        box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2); 
+                        transition: background-color 0.3s;
                     }
                     button:hover {
+                        background: #222;
                     }
                 }
                 .store_map_layer {
@@ -708,15 +764,43 @@ overflow: hidden;
 
     }
     footer {
+        padding:30px 0;
         background: #111;
+        @include flex-col;@include flex-center;
+        .footer_sns {
+            @include flex-row; gap:8px;
+            margin-bottom: 15px;
+        }
+        .footer_info {
+            margin-bottom: 40px;
+            p:nth-child(1){
+                color:$color-white;
+                margin-bottom: 10px;
+            }
+            p:nth-child(2){
+                margin-bottom: 10px;
+            }
+            p:nth-child(3){}
+            p {
+                color:#ddd;
+                text-align: center;
+            }
+        }
+        .footer_logo {
+            fill:$color-white;
+            svg {width:178px;height:auto;}
+        }
     }
 }
 @keyframes hoverJump {
     0% {
         transform: translateY(0);
     }
-    50% {
-        transform: translateY(-10px); // 5px 위로 이동
+    33% {
+        transform: translateY(-18px); // 5px 위로 이동
+    }
+    66% {
+        transform: translateY(6px);
     }
     100% {
         transform: translateY(0);  // 제자리로 복귀
