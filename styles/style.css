@@ -165,19 +165,19 @@ body.no-scroll {
   font-weight: 500;
 }
 #wrap main #main_view .swiper-wrapper .main_swiper_1 {
-  background-image: url(/images/main/main_bg_6.jpg);
+  background-image: url(../images/main/main_bg_6.jpg);
 }
 #wrap main #main_view .swiper-wrapper .main_swiper_2 {
-  background-image: url(/images/main/main_bg_7.jpg);
+  background-image: url(../images/main/main_bg_7.jpg);
 }
 #wrap main #main_view .swiper-wrapper .main_swiper_3 {
-  background-image: url(/images/main/main_bg_3.jpg);
+  background-image: url(../images/main/main_bg_3.jpg);
 }
 #wrap main #main_view .swiper-wrapper .main_swiper_4 {
-  background-image: url(/images/main/main_bg_4.jpg);
+  background-image: url(../images/main/main_bg_4.jpg);
 }
 #wrap main #main_view .swiper-wrapper .main_swiper_5 {
-  background-image: url(/images/main/main_bg_5.jpg);
+  background-image: url(../images/main/main_bg_5.jpg);
 }
 #wrap main #main_view .swiper-pagination {
   bottom: 30px;
@@ -478,31 +478,31 @@ body.no-scroll {
   display: none;
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lip-tint] {
-  background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
+  background-image: url(../images/new_collection/bg/lip_tint_small_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lip-tint] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lip-tint] .label {
   color: #C40B4B;
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lipstick] {
-  background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
+  background-image: url(../images/new_collection/bg/lipstick_small_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lipstick] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=lipstick] .label {
   color: #ED6455;
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=cheek] {
-  background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
+  background-image: url(../images/new_collection/bg/cheek_small_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=cheek] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=cheek] .label {
   color: #DD3CC0;
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=eyeshadow] {
-  background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+  background-image: url(../images/new_collection/bg/eyeshadow_small_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=eyeshadow] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=eyeshadow] .label {
   color: #FD0101;
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=powder] {
-  background-image: url(/images/new_collection/bg/powder_small_bg.jpg);
+  background-image: url(../images/new_collection/bg/powder_small_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=powder] .plus, #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab[data-cat=powder] .label {
   color: #C29677;
@@ -629,7 +629,7 @@ body.no-scroll {
   transform: scaleX(1);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(1) {
-  background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
+  background-image: url(../images/new_collection/bg/lip_tint_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(1) .nc-title {
   color: #C40B4B;
@@ -645,7 +645,7 @@ body.no-scroll {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(2) {
-  background-image: url(/images/new_collection/bg/lipstick_bg.jpg);
+  background-image: url(../images/new_collection/bg/lipstick_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(2) .nc-title {
   color: #ED6455;
@@ -661,7 +661,7 @@ body.no-scroll {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(3) {
-  background-image: url(/images/new_collection/bg/cheek_bg.jpg);
+  background-image: url(../images/new_collection/bg/cheek_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(3) .nc-title {
   color: #DD3CC0;
@@ -677,7 +677,7 @@ body.no-scroll {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(4) {
-  background-image: url(/images/new_collection/bg/eyeshadow_bg.jpg);
+  background-image: url(../images/new_collection/bg/eyeshadow_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(4) .nc-title {
   color: #FD0101;
@@ -693,7 +693,7 @@ body.no-scroll {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(5) {
-  background-image: url(/images/new_collection/bg/powder_bg.jpg);
+  background-image: url(../images/new_collection/bg/powder_bg.jpg);
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel:nth-child(5) .nc-title {
   color: #C29677;
@@ -768,7 +768,7 @@ body.no-scroll {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url(/images/banner/brand_banner.jpg);
+  background-image: url(../images/banner/brand_banner.jpg);
   transform: scaleX(-1);
   z-index: -1;
 }

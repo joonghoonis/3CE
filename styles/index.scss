@@ -112,19 +112,19 @@ overflow: hidden;
                     }
                 }
                 .main_swiper_1 {
-                    background-image: url(/images/main/main_bg_6.jpg);
+                    background-image: url(../images/main/main_bg_6.jpg);
                 }
                 .main_swiper_2 {
-                    background-image: url(/images/main/main_bg_7.jpg);
+                    background-image: url(../images/main/main_bg_7.jpg);
                 }
                 .main_swiper_3 {
-                    background-image: url(/images/main/main_bg_3.jpg);
+                    background-image: url(../images/main/main_bg_3.jpg);
                 }
                 .main_swiper_4 {
-                    background-image: url(/images/main/main_bg_4.jpg);
+                    background-image: url(../images/main/main_bg_4.jpg);
                 }
                 .main_swiper_5 {
-                    background-image: url(/images/main/main_bg_5.jpg);
+                    background-image: url(../images/main/main_bg_5.jpg);
                 }
             }
             .swiper-pagination { 
@@ -365,23 +365,23 @@ overflow: hidden;
                         display: none;
                     }
                     .nc-tab[data-cat="lip-tint"] {
-                        background-image: url(/images/new_collection/bg/lip_tint_small_bg.jpg);
+                        background-image: url(../images/new_collection/bg/lip_tint_small_bg.jpg);
                         .plus, .label { color:#C40B4B; }
                     }
                     .nc-tab[data-cat="lipstick"] {
-                        background-image: url(/images/new_collection/bg/lipstick_small_bg.jpg);
+                        background-image: url(../images/new_collection/bg/lipstick_small_bg.jpg);
                         .plus, .label { color:#ED6455; }
                     }
                     .nc-tab[data-cat="cheek"] {
-                        background-image: url(/images/new_collection/bg/cheek_small_bg.jpg);
+                        background-image: url(../images/new_collection/bg/cheek_small_bg.jpg);
                         .plus, .label { color:#DD3CC0; }
                     }
                     .nc-tab[data-cat="eyeshadow"] {
-                        background-image: url(/images/new_collection/bg/eyeshadow_small_bg.jpg);
+                        background-image: url(../images/new_collection/bg/eyeshadow_small_bg.jpg);
                         .plus, .label { color:#FD0101; }
                     }
                     .nc-tab[data-cat="powder"] {
-                        background-image: url(/images/new_collection/bg/powder_small_bg.jpg);
+                        background-image: url(../images/new_collection/bg/powder_small_bg.jpg);
                         .plus, .label { color:#C29677; }
                     }
                 }
@@ -482,7 +482,7 @@ overflow: hidden;
                     transform: scaleX(1);
                     }
                     .nc-panel:nth-child(1) {
-                        background-image: url(/images/new_collection/bg/lip_tint_bg.jpg);
+                        background-image: url(../images/new_collection/bg/lip_tint_bg.jpg);
                         .nc-title {
                             color:#C40B4B;
                         }
@@ -495,7 +495,7 @@ overflow: hidden;
                         }  
                     }
                     .nc-panel:nth-child(2) {
-                        background-image: url(/images/new_collection/bg/lipstick_bg.jpg);
+                        background-image: url(../images/new_collection/bg/lipstick_bg.jpg);
                         .nc-title {
                             color:#ED6455;
                         }
@@ -508,7 +508,7 @@ overflow: hidden;
                         }  
                     }
                     .nc-panel:nth-child(3) {
-                        background-image: url(/images/new_collection/bg/cheek_bg.jpg);
+                        background-image: url(../images/new_collection/bg/cheek_bg.jpg);
                         .nc-title {
                             color:#DD3CC0;
                         }
@@ -521,7 +521,7 @@ overflow: hidden;
                         }                        
                     }
                     .nc-panel:nth-child(4) {
-                        background-image: url(/images/new_collection/bg/eyeshadow_bg.jpg);
+                        background-image: url(../images/new_collection/bg/eyeshadow_bg.jpg);
                         .nc-title {
                             color:#FD0101;
                         }
@@ -534,7 +534,7 @@ overflow: hidden;
                         }
                     }
                     .nc-panel:nth-child(5){
-                        background-image: url(/images/new_collection/bg/powder_bg.jpg);
+                        background-image: url(../images/new_collection/bg/powder_bg.jpg);
                         .nc-title {
                             color:#C29677;
                         }
@@ -578,7 +578,7 @@ overflow: hidden;
             }
             &::before {
                 content: ''; position: absolute; inset: 0;
-                background-image: url(/images/banner/brand_banner.jpg);
+                background-image: url(../images/banner/brand_banner.jpg);
                 transform: scaleX(-1);z-index: -1; 
             }
         }
