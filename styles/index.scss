@@ -10,6 +10,7 @@ overflow: hidden;
         padding:20px 40px 0;
         transition: background-color 1s ease,transform 1s,opacity .3s;
         z-index:999;
+        
         .left {
             @include flex-row; gap:30px;
             .logo {
@@ -25,14 +26,24 @@ overflow: hidden;
             .nav {
                 @include flex-row;
                 align-items: center; justify-content: center;;
+                .tablet_mobile_menu {
+                        display: none;
+                    }
                 a {color:$color-white;transition: color 0.5s ease;}
                 .nav_list {@include flex-row; gap:30px;
                 }
             }
         }
+        .tablet_mobile_logo {
+            display: none; 
+            fill:$color-white; 
+        }
         .right_menu {
             @include flex-row; gap:35px;  
             justify-content: center; align-items: center;
+            .right_all_menu {
+                display: none;
+            }
             svg path {
                 fill: currentColor;
             }
@@ -568,7 +579,7 @@ overflow: hidden;
             position: relative;
             padding:0 100px 0;
             .brand_wrap{
-                @include flex-col; align-items: end; gap:30px; justify-content: center;
+                @include flex-col; align-items: end; gap:60px; justify-content: center;
                 height: 100%;
                 .brand_title {
                     @include flex-col; align-items: end;gap:8px;
@@ -591,7 +602,8 @@ overflow: hidden;
             &::before {
                 content: ''; position: absolute; inset: 0;
                 background-image: url(../images/banner/brand_banner.jpg);
-                transform: scaleX(-1);z-index: -1; 
+                @include bgset;
+                transform: scaleX(-1);z-index: -1;
             }
         }
         #with_celebs {
@@ -730,7 +742,10 @@ overflow: hidden;
                 .store_img {
                     aspect-ratio: 2/1;
                     @include flex-row;gap:0;
-                    img{width:100%;height: 100%;max-width: 350px}
+                    img{
+                        width:100%;height: 100%;
+                        max-width: 350px;
+                        object-fit: cover}
                 }
                 .store_info {
                     @include flex-col;justify-content:center;gap:30px;align-items: start;

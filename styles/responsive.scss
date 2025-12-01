@@ -9,6 +9,9 @@
             #category,#best_sellers,#new_collection,#with_clebs,#store_location {
                 padding : 60px 40px;
             }
+            #brand_banner {
+                padding: 0 80px;
+            }
             #best_sellers {
                 .best_wrap {
                     @include flex-col;
@@ -37,12 +40,20 @@
     }
 }
 @media (max-width: 1200px) {
-    #wrap main{  
-        #best_sellers .best_wrap .best_contents{height: 480px;}
-        #category {
-            .cate_wrap {
-                .category_list {
-                    height:450px;
+    #wrap {
+        header {
+            .left{}
+            .right_menu {
+                gap:25px;
+            }
+        }
+        main{  
+            #best_sellers .best_wrap .best_contents{height: 480px;}
+            #category {
+                .cate_wrap {
+                    .category_list {
+                        height:450px;
+                    }
                 }
             }
         }
@@ -50,6 +61,33 @@
 }
 @media (max-width: 1024px) {
     #wrap {
+        header {
+            padding:15px 30px 0;
+            .left{
+                flex: 1;  
+                display: flex;
+                justify-content: flex-start;
+                .logo {
+                    display: none;
+                }
+                .nav {
+                    .tablet_mobile_menu {
+                        display: block;
+                    }
+                    .nav_list {
+                        display: none;
+                    }
+                }
+            }
+            .tablet_mobile_logo {
+                display: block;
+            }
+            .right_menu {
+                flex: 1;  
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
         main {
             #category,#best_sellers,#new_collection,#with_celebs,#store_location {
                 padding : 40px 30px;
@@ -92,11 +130,58 @@
                     }
                 }
             }
+            #brand_banner {
+                height: 350px;
+                padding: 0 50px;
+                .brand_wrap {
+                    gap :45px;
+                    .brand_title{
+                        h2 {font-size: 28px;}
+                    }
+                    .brand_contents {
+                        p {font-size: 15px;}
+                        span {font-size: 13px;}
+                    }
+                    a { font-size: 13px; padding: 8px 16px;}
+                }
+            }
             #with_celebs {
                 #celeb_swiper {
+                    .celeb_id {
+                        font-size: 14px;
+                    }
                     .swiper-button-prev,.swiper-button-next {
                         display: none;
                     }
+                }
+            }
+            #store_location {
+                .store_wrap {
+                    gap:30px;
+                    .store_img {
+                        img {
+                            max-width: 100%;
+                            min-width: 0;
+                        }
+                    }
+                    .store_info {
+                        p {font-size: 18px;}
+                        h2 {font-size: 24px;}
+                        span {}
+                    }
+                }
+            }
+        }
+        footer {
+            padding :15px 0;
+            .footer_info {
+                p {
+                    font-size: 14px;
+                }
+            }
+            .footer_logo {
+                svg {
+                    width: 120px;
                 }
             }
         }
@@ -104,8 +189,31 @@
 }
 @media (max-width: 768px) {
     #wrap {
+        header {
+            .left {
+                .logo {
+                    display: block;
+                }
+                .nav {
+                    display: none;;
+                }
+            }
+            padding : 15px 20px 0;
+            .tablet_mobile_logo {
+                display: none;
+            }
+            .right_menu{
+                .right_all_menu {
+                    display: block;
+                }
+                gap: 25px;
+                .menu_btn {
+                    display: none;
+                }
+            }
+        }
         main {
-            #category,#best_sellers,#new_collection,#with_clebs,#store_location {
+            #category,#best_sellers,#new_collection,#with_celebs,#store_location {
                 padding : 20px;
             }
             #category {
@@ -116,6 +224,7 @@
                 .cate_wrap {
                     .category_list {
                         height: 280px;
+                        h2 {left:15px;bottom: 15px;}
                     }
                 }
             }
@@ -128,11 +237,91 @@
             #youtube_banner {
                 height: 400px;
             }
+            #brand_banner {
+                padding: 0 30px;
+                .brand_wrap {
+                    .brand_title{
+                        h2 {font-size: 24px;}
+                    }
+                    .brand_contents {
+                        p {font-size: 13px;}
+                        span {font-size: 12px;}
+                    }
+                }
+            }
+            #with_celebs {
+                #celeb_swiper {
+                    .celeb_id {
+                        font-size: 14px;
+                    }
+                }
+            }
+            #store_location {
+                .store_wrap {
+                    gap:15px;
+                    .store_img {
+                        img {
+                            max-width: 100%;
+                            min-width: 0;
+                        }
+                    }
+                    .store_info {
+                        p {font-size: 16px;}
+                        h2 {
+                            font-size: $font-size-18;
+                        }
+                        span {font-size: $font-size-13;}
+                        button{
+                            font-size: $font-size-12;
+                            padding:10px 18px;
+                        }
+                    }
+                }
+            }
         }
+        
     }
     
 }
-
+@media (max-width: 580px) {
+    #wrap {
+        main {
+            #store_location{
+                .store_wrap {
+                    .store_img{
+                        img {
+                            min-width: 65px;
+                        }
+                    }
+                    .store_info {
+                        p {font-size: $font-size-14}
+                        h2 {font-size: $font-size-14;}
+                        span {
+                            font-size: 11px;
+                        }
+                        button {
+                            padding:7px 14px ;
+                            font-size: 11px; white-space: nowrap;
+                        }
+                    }
+                }
+            }
+            #brand_banner {
+                padding: 0 20px;
+                .brand_wrap {
+                    gap:30px;
+                    .brand_title{
+                        h2 {font-size: 24px;}
+                    }
+                    .brand_contents {
+                        p {font-size: 11px;}
+                        span {font-size: 11px;}
+                    }
+                }
+            }
+        }
+    }
+}
 @media (max-width: 440px) {
 
     #wrap {
@@ -140,14 +329,16 @@
             #category,#best_sellers,#new_collection,#with_clebs,#store_location {
                 padding : 15px 15px;
             }
-            #best_sellers .best_wrap .best_contents{
-            height:460px;
-            .swiper .swiper-wrapper .swiper-slide .info {
-                .name {height: 30px; }
-                .price, .name {
-                    font-size: $font-size-13;
-                }
-                .detail {font-size:$font-size-12;}
+            #best_sellers .best_wrap { 
+                .best_contents {
+                height:460px;
+                .swiper .swiper-wrapper .swiper-slide .info {
+                    .name {height: 30px; }
+                    .price, .name {
+                        font-size: $font-size-13;
+                    }
+                    .detail {font-size:$font-size-12;}
+                    }
                 }
             }
             #category {
@@ -158,11 +349,55 @@
                 .cate_wrap {
                     .category_list {
                         height: 180px;
+                        h2 {font-size: 14px;left:8px;bottom: 8px;}
                     }
                 }
             }
             #youtube_banner {
                 height: 238px;
+            }
+            #brand_banner {
+                padding: 0 15px;
+                .brand_wrap {
+                    .brand_title{
+                        h2 {font-size: 20px;}
+                    }
+                    .brand_contents {
+                        p {font-size: 10px;}
+                        span {font-size: 10px;}
+                    }
+                }
+            }
+            #store_location {
+                .store_wrap {
+                    gap: 10px;
+                    .store_img {
+                        img {
+                            min-width: 50px;
+                        }
+                    }
+                    .store_info {gap: 15px;
+                        p {font-size: 13px;}
+                        h2 {font-size: 13px;}
+                        span {font-size: 11px;}
+                        button {
+                            font-size :9px;
+                        }
+                    }
+                }
+            }
+        }
+        footer {
+            padding :15px 0;
+            .footer_info {
+                p {
+                    font-size: 12px;
+                }
+            }
+            .footer_logo {
+                svg {
+                    width: 70px;
+                }
             }
         }
     }

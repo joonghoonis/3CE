@@ -10,6 +10,9 @@
   #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_clebs, #wrap main #store_location {
     padding: 60px 40px;
   }
+  #wrap main #brand_banner {
+    padding: 0 80px;
+  }
   #wrap main #best_sellers .best_wrap {
     display: flex;
     flex-flow: column nowrap;
@@ -32,6 +35,9 @@
   }
 }
 @media (max-width: 1200px) {
+  #wrap header .right_menu {
+    gap: 25px;
+  }
   #wrap main #best_sellers .best_wrap .best_contents {
     height: 480px;
   }
@@ -40,6 +46,31 @@
   }
 }
 @media (max-width: 1024px) {
+  #wrap header {
+    padding: 15px 30px 0;
+  }
+  #wrap header .left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+  #wrap header .left .logo {
+    display: none;
+  }
+  #wrap header .left .nav .tablet_mobile_menu {
+    display: block;
+  }
+  #wrap header .left .nav .nav_list {
+    display: none;
+  }
+  #wrap header .tablet_mobile_logo {
+    display: block;
+  }
+  #wrap header .right_menu {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
   #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_celebs, #wrap main #store_location {
     padding: 40px 30px;
   }
@@ -76,12 +107,78 @@
   #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .detail {
     font-size: 0.875rem;
   }
+  #wrap main #brand_banner {
+    height: 350px;
+    padding: 0 50px;
+  }
+  #wrap main #brand_banner .brand_wrap {
+    gap: 45px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_title h2 {
+    font-size: 28px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents p {
+    font-size: 15px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents span {
+    font-size: 13px;
+  }
+  #wrap main #brand_banner .brand_wrap a {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+  #wrap main #with_celebs #celeb_swiper .celeb_id {
+    font-size: 14px;
+  }
   #wrap main #with_celebs #celeb_swiper .swiper-button-prev, #wrap main #with_celebs #celeb_swiper .swiper-button-next {
     display: none;
   }
+  #wrap main #store_location .store_wrap {
+    gap: 30px;
+  }
+  #wrap main #store_location .store_wrap .store_img img {
+    max-width: 100%;
+    min-width: 0;
+  }
+  #wrap main #store_location .store_wrap .store_info p {
+    font-size: 18px;
+  }
+  #wrap main #store_location .store_wrap .store_info h2 {
+    font-size: 24px;
+  }
+  #wrap footer {
+    padding: 15px 0;
+  }
+  #wrap footer .footer_info p {
+    font-size: 14px;
+  }
+  #wrap footer .footer_logo svg {
+    width: 120px;
+  }
 }
 @media (max-width: 768px) {
-  #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_clebs, #wrap main #store_location {
+  #wrap header .left .logo {
+    display: block;
+  }
+  #wrap header .left .nav {
+    display: none;
+  }
+  #wrap header {
+    padding: 15px 20px 0;
+  }
+  #wrap header .tablet_mobile_logo {
+    display: none;
+  }
+  #wrap header .right_menu .right_all_menu {
+    display: block;
+  }
+  #wrap header .right_menu {
+    gap: 25px;
+  }
+  #wrap header .right_menu .menu_btn {
+    display: none;
+  }
+  #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_celebs, #wrap main #store_location {
     padding: 20px;
   }
   #wrap main #category .title {
@@ -93,6 +190,10 @@
   #wrap main #category .cate_wrap .category_list {
     height: 280px;
   }
+  #wrap main #category .cate_wrap .category_list h2 {
+    left: 15px;
+    bottom: 15px;
+  }
   #wrap main #best_sellers .best_wrap .best_contents {
     height: 420px;
   }
@@ -101,6 +202,75 @@
   }
   #wrap main #youtube_banner {
     height: 400px;
+  }
+  #wrap main #brand_banner {
+    padding: 0 30px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_title h2 {
+    font-size: 24px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents p {
+    font-size: 13px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents span {
+    font-size: 12px;
+  }
+  #wrap main #with_celebs #celeb_swiper .celeb_id {
+    font-size: 14px;
+  }
+  #wrap main #store_location .store_wrap {
+    gap: 15px;
+  }
+  #wrap main #store_location .store_wrap .store_img img {
+    max-width: 100%;
+    min-width: 0;
+  }
+  #wrap main #store_location .store_wrap .store_info p {
+    font-size: 16px;
+  }
+  #wrap main #store_location .store_wrap .store_info h2 {
+    font-size: 1.125rem;
+  }
+  #wrap main #store_location .store_wrap .store_info span {
+    font-size: 0.813rem;
+  }
+  #wrap main #store_location .store_wrap .store_info button {
+    font-size: 0.75rem;
+    padding: 10px 18px;
+  }
+}
+@media (max-width: 580px) {
+  #wrap main #store_location .store_wrap .store_img img {
+    min-width: 65px;
+  }
+  #wrap main #store_location .store_wrap .store_info p {
+    font-size: 0.875rem;
+  }
+  #wrap main #store_location .store_wrap .store_info h2 {
+    font-size: 0.875rem;
+  }
+  #wrap main #store_location .store_wrap .store_info span {
+    font-size: 11px;
+  }
+  #wrap main #store_location .store_wrap .store_info button {
+    padding: 7px 14px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  #wrap main #brand_banner {
+    padding: 0 20px;
+  }
+  #wrap main #brand_banner .brand_wrap {
+    gap: 30px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_title h2 {
+    font-size: 24px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents p {
+    font-size: 11px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents span {
+    font-size: 11px;
   }
 }
 @media (max-width: 440px) {
@@ -128,8 +298,55 @@
   #wrap main #category .cate_wrap .category_list {
     height: 180px;
   }
+  #wrap main #category .cate_wrap .category_list h2 {
+    font-size: 14px;
+    left: 8px;
+    bottom: 8px;
+  }
   #wrap main #youtube_banner {
     height: 238px;
+  }
+  #wrap main #brand_banner {
+    padding: 0 15px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_title h2 {
+    font-size: 20px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents p {
+    font-size: 10px;
+  }
+  #wrap main #brand_banner .brand_wrap .brand_contents span {
+    font-size: 10px;
+  }
+  #wrap main #store_location .store_wrap {
+    gap: 10px;
+  }
+  #wrap main #store_location .store_wrap .store_img img {
+    min-width: 50px;
+  }
+  #wrap main #store_location .store_wrap .store_info {
+    gap: 15px;
+  }
+  #wrap main #store_location .store_wrap .store_info p {
+    font-size: 13px;
+  }
+  #wrap main #store_location .store_wrap .store_info h2 {
+    font-size: 13px;
+  }
+  #wrap main #store_location .store_wrap .store_info span {
+    font-size: 11px;
+  }
+  #wrap main #store_location .store_wrap .store_info button {
+    font-size: 9px;
+  }
+  #wrap footer {
+    padding: 15px 0;
+  }
+  #wrap footer .footer_info p {
+    font-size: 12px;
+  }
+  #wrap footer .footer_logo svg {
+    width: 70px;
   }
 }
 @media (max-width: 360px) {

@@ -37,6 +37,9 @@ body.no-scroll {
   align-items: center;
   justify-content: center;
 }
+#wrap header .left .nav .tablet_mobile_menu {
+  display: none;
+}
 #wrap header .left .nav a {
   color: #fff;
   transition: color 0.5s ease;
@@ -46,12 +49,19 @@ body.no-scroll {
   flex-flow: row nowrap;
   gap: 30px;
 }
+#wrap header .tablet_mobile_logo {
+  display: none;
+  fill: #fff;
+}
 #wrap header .right_menu {
   display: flex;
   flex-flow: row nowrap;
   gap: 35px;
   justify-content: center;
   align-items: center;
+}
+#wrap header .right_menu .right_all_menu {
+  display: none;
 }
 #wrap header .right_menu svg path {
   fill: currentColor;
@@ -744,7 +754,7 @@ body.no-scroll {
   display: flex;
   flex-flow: column nowrap;
   align-items: end;
-  gap: 30px;
+  gap: 60px;
   justify-content: center;
   height: 100%;
 }
@@ -789,6 +799,9 @@ body.no-scroll {
   position: absolute;
   inset: 0;
   background-image: url(../images/banner/brand_banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain */
+  background-position: center;
   transform: scaleX(-1);
   z-index: -1;
 }
@@ -993,6 +1006,7 @@ body.no-scroll {
   width: 100%;
   height: 100%;
   max-width: 350px;
+  object-fit: cover;
 }
 #wrap main #store_location .store_wrap .store_info {
   display: flex;
