@@ -31,33 +31,113 @@ new Swiper("#best_eyes_swiper", {
         nextEl: "#best_eyes_swiper .swiper-button-next",
         prevEl: "#best_eyes_swiper .swiper-button-prev",
     },
+    breakpoints:{
+        1024: {
+            slidesPerView:3.3
+        },
+        768: {
+            slidesPerView:3,
+        },
+        650: {
+            slidesPerView:2.8,
+        },
+        520: {
+            slidesPerView:2.5,
+        },
+        440: {
+            slidesPerView:1.7,
+        },
+        0: {
+            slidesPerView:1.3
+        }
+    }
 })
 new Swiper("#best_lips_swiper", {
     spaceBetween:20,
-    slidesPerView:3.5,
+    slidesPerView:3.3,
     slidesPerGroup: 1,
     navigation: {
         nextEl: "#best_lips_swiper .swiper-button-next",
         prevEl: "#best_lips_swiper .swiper-button-prev",
     },
+    breakpoints:{
+        1024: {
+            slidesPerView:3.3
+        },
+        768: {
+            slidesPerView:3,
+        },
+        650: {
+            slidesPerView:2.8,
+        },
+        520: {
+            slidesPerView:2.5,
+        },
+        440: {
+            slidesPerView:1.7,
+        },
+        0: {
+            slidesPerView:1.3
+        }
+    }
 })
 new Swiper("#best_face_swiper", {
     spaceBetween:20,
-    slidesPerView:3.5,
+    slidesPerView:3.3,
     slidesPerGroup: 1,
     navigation: {
         nextEl: "#best_face_swiper .swiper-button-next",
         prevEl: "#best_face_swiper .swiper-button-prev",
     },
+    breakpoints:{
+        1024: {
+            slidesPerView:3.3
+        },
+        768: {
+            slidesPerView:3,
+        },
+        650: {
+            slidesPerView:2.8,
+        },
+        520: {
+            slidesPerView:2.5,
+        },
+        440: {
+            slidesPerView:1.7,
+        },
+        0: {
+            slidesPerView:1.3
+        }
+    }
 })
 new Swiper("#best_essentials_swiper", {
     spaceBetween:20,
-    slidesPerView:3.5,
+    slidesPerView:3.3,
     slidesPerGroup: 1,
     navigation: {
         nextEl: "#best_essentials_swiper .swiper-button-next",
         prevEl: "#best_essentials_swiper .swiper-button-prev",
     },
+    breakpoints:{
+        1024: {
+            slidesPerView:3.3
+        },
+        768: {
+            slidesPerView:3,
+        },
+        650: {
+            slidesPerView:2.8,
+        },
+        520: {
+            slidesPerView:2.5,
+        },
+        440: {
+            slidesPerView:1.7,
+        },
+        0: {
+            slidesPerView:1.3
+        }
+    }
 })
 const tabButtons = document.querySelectorAll('.best_category button');
 const panels = document.querySelectorAll('.best_panel');
@@ -189,6 +269,23 @@ const celebSwiper = new Swiper("#celeb_swiper", {
     navigation: {
         nextEl: "#celeb_swiper .swiper-button-next",
         prevEl: "#celeb_swiper .swiper-button-prev"
+    },
+    breakpoints : {
+        1440: {
+            slidesPerView:5
+        },
+        1200: {
+            slidesPerView:4.2
+        },
+        768: {
+            slidesPerView:3.4
+        },
+        520: {
+            slidesPerView:2.2
+        },
+        0: {
+            slidesPerView:1.5
+        }
     }
 })
 document.addEventListener('DOMContentLoaded', function () {

@@ -1,0 +1,141 @@
+@media (max-width: 1660px) {
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 550px;
+  }
+  #wrap main #new_collection .nc_wrap .nc_panels {
+    height: 760px;
+  }
+}
+@media (max-width: 1440px) {
+  #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_clebs, #wrap main #store_location {
+    padding: 60px 40px;
+  }
+  #wrap main #best_sellers .best_wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    overflow: visible;
+  }
+  #wrap main #best_sellers .best_wrap .best_category {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 auto 30px;
+  }
+  #wrap main #best_sellers .best_wrap .best_category li::after {
+    display: none;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 570px;
+    flex: 0 0 auto;
+  }
+  #wrap main #new_collection .nc_wrap .nc_panels {
+    height: 700px;
+  }
+}
+@media (max-width: 1200px) {
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 480px;
+  }
+  #wrap main #category .cate_wrap .category_list {
+    height: 450px;
+  }
+}
+@media (max-width: 1024px) {
+  #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_celebs, #wrap main #store_location {
+    padding: 40px 30px;
+  }
+  #wrap main #category .title, #wrap main #best_sellers .title, #wrap main #new_collection .title, #wrap main #with_celebs .title,
+  #wrap main #stroe_location .title {
+    font-size: 1.125rem;
+    margin-bottom: 20px;
+  }
+  #wrap main #category .title {
+    padding: 0 30px;
+  }
+  #wrap main #category {
+    padding: 40px 0;
+  }
+  #wrap main #category .cate_wrap .category_list {
+    height: 380px;
+  }
+  #wrap main #category .cate_wrap .category_list h2 {
+    font-size: 16px;
+  }
+  #wrap main #category .cate_wrap .category_list:hover h2 {
+    font-size: 32px;
+  }
+  #wrap main #best_sellers .best_wrap .best_category li button {
+    font-size: 0.938rem;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 470px;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .name, #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .price {
+    font-size: 0.938rem;
+    text-align: center;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .detail {
+    font-size: 0.875rem;
+  }
+  #wrap main #with_celebs #celeb_swiper .swiper-button-prev, #wrap main #with_celebs #celeb_swiper .swiper-button-next {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_clebs, #wrap main #store_location {
+    padding: 20px;
+  }
+  #wrap main #category .title {
+    padding: 10px 15px 0;
+  }
+  #wrap main #category {
+    padding: 15px 0;
+  }
+  #wrap main #category .cate_wrap .category_list {
+    height: 280px;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 420px;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .name {
+    height: 30px;
+  }
+  #wrap main #youtube_banner {
+    height: 400px;
+  }
+}
+@media (max-width: 440px) {
+  #wrap main #category, #wrap main #best_sellers, #wrap main #new_collection, #wrap main #with_clebs, #wrap main #store_location {
+    padding: 15px 15px;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 460px;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .name {
+    height: 30px;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .price, #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .name {
+    font-size: 0.813rem;
+  }
+  #wrap main #best_sellers .best_wrap .best_contents .swiper .swiper-wrapper .swiper-slide .info .detail {
+    font-size: 0.75rem;
+  }
+  #wrap main #category .title {
+    padding: 0 15px;
+  }
+  #wrap main #category {
+    padding: 15px 0;
+  }
+  #wrap main #category .cate_wrap .category_list {
+    height: 180px;
+  }
+  #wrap main #youtube_banner {
+    height: 238px;
+  }
+}
+@media (max-width: 360px) {
+  #wrap main #best_sellers .best_wrap .best_contents {
+    height: 370px;
+  }
+}
+
+/*# sourceMappingURL=style_respons.css.map */

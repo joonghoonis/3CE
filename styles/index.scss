@@ -1,5 +1,4 @@
 @use './common.scss' as *;
-@use './responsive.scss';
 body.no-scroll {
 overflow: hidden;
 }
@@ -204,7 +203,7 @@ overflow: hidden;
             padding:80px 50px;
                 
             .best_wrap{
-                @include flex-row; overflow: hidden;              
+                @include flex-row;      
                 .best_category {
                     @include flex-col;
                     gap:30px; 
@@ -230,16 +229,21 @@ overflow: hidden;
                 }
                 .best_contents {
                     position: relative;         // 패널들 겹치게 깔아둘 거라 필요함
-                    min-height:650px;   
+                    height:650px;   
                     flex: 1 1 0;
                     .swiper {
+                        height: 100%;
+                        
                         .swiper-wrapper{
+                            align-items: center;
                             .swiper-slide{
                                 .thumb {
                                     position: relative;
+                                    width: 100%;
+                                    min-width:180px;
                                     max-width: 445px; 
-                                    width:100%;
-                                    height: 570px;
+                                    aspect-ratio: 4 / 5;  
+                                    overflow: hidden;
                                     .img_default,.img_hover {
                                         position: absolute;
                                         width:100%;height:100%;
@@ -304,6 +308,7 @@ overflow: hidden;
                     }
                         .best_panel {
                             position: absolute;
+                            align-items: center;
                             inset: 0;                 // top:0; right:0; bottom:0; left:0;
                             opacity: 0;
                             visibility: hidden;
@@ -319,7 +324,7 @@ overflow: hidden;
                         }
                 }
             }
-        }
+        }   
         #youtube_banner {
             position: relative;
             width: 100%;
@@ -390,10 +395,10 @@ overflow: hidden;
                 .nc_panels {
                     width:100%;height:880px ;
                     position: relative;
-                    overflow: hidden; // 애니메이션 중 삐져나오는 거 숨김
+                    overflow: hidden;
                     .nc-panel { 
                         padding:40px 45px 0;
-                        @include flex-row; justify-content: space-between;
+                        @include flex-row; justify-content: center; gap:45px;
                         position: absolute;
                         inset: 0;
                         opacity: 0;
@@ -401,6 +406,8 @@ overflow: hidden;
                         transform: scaleX(.95);
                         transition: opacity .3s ease, transform .5s ease;
                         .nc_visual {
+                            /* max-width: 800px; min-width: 420px; */flex: 3 1 0;   // 왼쪽이 좀 더 넓게
+                            min-width: 0;  // ★ min-width:520px 없애기
                             max-width: 800px;
                             img {
                                 width:100%;height: auto;
@@ -408,6 +415,9 @@ overflow: hidden;
                         }
                         .right_panel {
                             @include flex-col; justify-content:flex-start; gap:20px;
+                            /* max-width: 610px;   width: 100%; */ flex: 2 1 0;   // 오른쪽도 같이 줄어들 수 있게
+                            min-width: 0;
+                            max-width: none;
                             .nc-title{
                                 margin: 0 auto;
                                 font-size: $font-size-24;
@@ -415,21 +425,23 @@ overflow: hidden;
                                 }
                             .nc-products {
                                 display: grid;
-                                grid-template-columns: repeat(2, 280px);
-                                grid-auto-rows: 354px;
+                                grid-template-columns: repeat(2,  minmax(180px, 1fr));
                                 gap: 30px 50px;  
+                                /* grid-auto-rows: 354px; */
                                 .nc-product{
                                     position: relative;
                                     a {
+                                        display: flex;
+                                        flex-direction: column;
                                         .thumb {
                                             position: relative;
-                                            max-width: 280px; height: 280px;overflow:hidden;
+                                            width: 100%;aspect-ratio: 1 / 1;  ;overflow:hidden;
                                             img {
                                                 width: 100%;
+                                                height: 100%; 
                                                 position:absolute;
                                                 inset: 0;
                                                 transition: opacity 0.5s;
-                                                height: 100%; 
                                                 object-fit: cover;     
                                                 object-position: center;
                                             }
@@ -443,8 +455,8 @@ overflow: hidden;
                                             }
                                         }
                                         .info {
-                                            position: absolute;
-                                            bottom: 0;
+                                            position: static;   
+                                            margin-top: 10px;  
                                             @include flex-col;
                                             .name {
                                                 margin-bottom:5px;
@@ -453,7 +465,7 @@ overflow: hidden;
                                                 overflow: hidden;
                                                 white-space: nowrap;
                                                 text-overflow: ellipsis;
-                                                max-width:280px;
+                                                max-width:100%;
                                             }
                                             .opt {
                                                 margin-bottom: 10px;
@@ -598,8 +610,15 @@ overflow: hidden;
                         overflow: hidden;
                         border-radius: 10px;
                         .video_wrap {
-                            .view {
-                                height: 650px;
+                            position: relative;
+                            width: 100%;
+                            aspect-ratio: 9 / 16;
+                            overflow: hidden;
+                            border-radius: 10px;
+                            .view { 
+                                width: 100%;
+                                height: 100%;
+                                position: relative;
                             }
                             video {
                                 position: absolute;top:0;
