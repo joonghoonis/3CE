@@ -158,21 +158,23 @@ body.no-scroll {
   font-weight: 500;
 }
 #wrap main #main_view .swiper-wrapper .swiper-slide .main_product_info h2 {
+  text-align: center;
   color: #F1F08D;
   font-weight: 500;
   font-size: 1.875rem;
+  white-space: nowrap;
 }
 #wrap main #main_view .swiper-wrapper .swiper-slide .main_product_learn_more {
   position: absolute;
   bottom: 65px;
   left: 50%;
   transform: translateX(-50%);
-  border: 1px solid #F1F08D;
+  border: 2px solid #F1F08D;
   border-radius: 20px;
   font-size: 0.938rem;
   color: #F1F08D;
   padding: 7px 14px;
-  font-weight: 500;
+  font-weight: 600;
 }
 #wrap main #main_view .swiper-wrapper .main_swiper_1 {
   background-image: url(../images/main/main_bg_6.jpg);
@@ -473,6 +475,9 @@ body.no-scroll {
   text-orientation: mixed;
 }
 #wrap main #new_collection .nc_wrap .nc_tabs .nc-tab {
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain */
+  background-position: center;
   display: flex;
   height: 100%;
   padding: 50px 21px;
@@ -533,11 +538,15 @@ body.no-scroll {
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel {
   padding: 40px 45px 0;
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain */
+  background-position: center;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   gap: 45px;
   position: absolute;
+  align-items: center;
   inset: 0;
   opacity: 0;
   pointer-events: none;
@@ -571,7 +580,7 @@ body.no-scroll {
 }
 #wrap main #new_collection .nc_wrap .nc_panels .nc-panel .right_panel .nc-products {
   display: grid;
-  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
   gap: 30px 50px;
   /* grid-auto-rows: 354px; */
 }
