@@ -1,487 +1,401 @@
-/* header scroll */
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (!header) return;
-  
-    if (window.scrollY > 10) {
-      header.classList.add('scrolled');   // ✅ CSS랑 이름 맞추기
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-/* main-Swiper */
-const mainSwiper = new Swiper("#main_view", {
-    autoplay:{delay:15000},
-    loop:true,
-    navigation: {
-        nextEl: "#main_view .swiper-button-next",
-        prevEl: "#main_view .swiper-button-prev",
-    },
-    pagination: {
-        el: "#main_view .swiper-pagination",
-        clickable: true,
-    }
-});
-/* best-Swiper */
-new Swiper("#best_eyes_swiper", {
-    spaceBetween:20,
-    slidesPerView:3.3,
-    slidesPerGroup: 1,
-    navigation: {
-        nextEl: "#best_eyes_swiper .swiper-button-next",
-        prevEl: "#best_eyes_swiper .swiper-button-prev",
-    },
-    breakpoints:{
-        1024: {
-            slidesPerView:3.3
-        },
-        768: {
-            slidesPerView:3,
-        },
-        650: {
-            slidesPerView:2.8,
-        },
-        520: {
-            slidesPerView:2.5,
-        },
-        440: {
-            slidesPerView:1.7,
-        },
-        0: {
-            slidesPerView:1.3
-        }
-    }
-})
-new Swiper("#best_lips_swiper", {
-    spaceBetween:20,
-    slidesPerView:3.3,
-    slidesPerGroup: 1,
-    navigation: {
-        nextEl: "#best_lips_swiper .swiper-button-next",
-        prevEl: "#best_lips_swiper .swiper-button-prev",
-    },
-    breakpoints:{
-        1024: {
-            slidesPerView:3.3
-        },
-        768: {
-            slidesPerView:3,
-        },
-        650: {
-            slidesPerView:2.8,
-        },
-        520: {
-            slidesPerView:2.5,
-        },
-        440: {
-            slidesPerView:1.7,
-        },
-        0: {
-            slidesPerView:1.3
-        }
-    }
-})
-new Swiper("#best_face_swiper", {
-    spaceBetween:20,
-    slidesPerView:3.3,
-    slidesPerGroup: 1,
-    navigation: {
-        nextEl: "#best_face_swiper .swiper-button-next",
-        prevEl: "#best_face_swiper .swiper-button-prev",
-    },
-    breakpoints:{
-        1024: {
-            slidesPerView:3.3
-        },
-        768: {
-            slidesPerView:3,
-        },
-        650: {
-            slidesPerView:2.8,
-        },
-        520: {
-            slidesPerView:2.5,
-        },
-        440: {
-            slidesPerView:1.7,
-        },
-        0: {
-            slidesPerView:1.3
-        }
-    }
-})
-new Swiper("#best_essentials_swiper", {
-    spaceBetween:20,
-    slidesPerView:3.3,
-    slidesPerGroup: 1,
-    navigation: {
-        nextEl: "#best_essentials_swiper .swiper-button-next",
-        prevEl: "#best_essentials_swiper .swiper-button-prev",
-    },
-    breakpoints:{
-        1024: {
-            slidesPerView:3.3
-        },
-        768: {
-            slidesPerView:3,
-        },
-        650: {
-            slidesPerView:2.8,
-        },
-        520: {
-            slidesPerView:2.5,
-        },
-        440: {
-            slidesPerView:1.7,
-        },
-        0: {
-            slidesPerView:1.3
-        }
-    }
-})
-const tabButtons = document.querySelectorAll('.best_category button');
-const panels = document.querySelectorAll('.best_panel');
-
-tabButtons.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const target = btn.dataset.bestTab; // eyes / lips / face / essentials
-
-    // 1) 탭 active 리셋 + 현재 탭에 active
-    tabButtons.forEach((b) => b.parentElement.classList.remove('active'));
-    btn.parentElement.classList.add('active');
-
-    // 2) 패널 on/off
-    panels.forEach((panel) => {
-      const isTarget = panel.dataset.bestPanel === target;
-      panel.classList.toggle('active', isTarget);
-    });
-  });
-});
-/* ====================================new collection================================== */
 document.addEventListener('DOMContentLoaded', () => {
-const section = document.querySelector('#new_collection');
-if (!section) return;
-
-const leftTabsWrap  = section.querySelector('.nc_tabs--left');
-const rightTabsWrap = section.querySelector('.nc_tabs--right');
-const panels        = Array.from(section.querySelectorAll('.nc_panels .nc-panel'));
-const allTabs       = Array.from(section.querySelectorAll('.nc_tabs .nc-tab'));
-
-// 카테고리 순서 (왼쪽/오른쪽 쌓이는 기준)
-const categoryOrder = ['lip-tint', 'lipstick', 'cheek', 'eyeshadow', 'powder'];
-
-// data-cat으로 탭/패널 맵
-const tabMap   = {};
-const panelMap = {};
-
-categoryOrder.forEach(cat => {
-    const tab   = allTabs.find(t => t.dataset.cat === cat);
-    const panel = panels.find(p => p.dataset.cat === cat);
-    if (tab)   tabMap[cat]   = tab;
-    if (panel) panelMap[cat] = panel;
-});
-
-let currentCat = 'lip-tint'; // 초기 활성 카테고리
-
-// 탭 위치/표시 업데이트
-function updateTabs(activeCat) {
-    const activeIndex = categoryOrder.indexOf(activeCat);
-
-    categoryOrder.forEach((cat, idx) => {
-    const tab = tabMap[cat];
-    if (!tab) return;
-
-    // 활성 상태 초기화 (.on 제거)
-    tab.classList.remove('on');
-
-    // active 전에 있는 카테고리 → 왼쪽으로 접혀 쌓임
-    if (idx < activeIndex) {
-        leftTabsWrap.appendChild(tab);
-    }
-    // active 뒤에 있는 카테고리 → 오른쪽에 남음
-    else if (idx > activeIndex) {
-        rightTabsWrap.appendChild(tab);
-    }
-    // active 본인
-    else if (idx === activeIndex) {
-        // 어디에 있든 상관없고, 그냥 투명 처리만 한다.
-        // (필요하면 특정 위치에 appendChild 해도 됨)
-    }
-    });
-
-    // 마지막에 활성 탭에 .on 붙여서 opacity 0 (페이드 아웃)
-    const activeTab = tabMap[activeCat];
-    if (activeTab) {
-    activeTab.classList.add('on');
-    }
-}
-
-// 패널 애니메이션 (왼쪽/오른쪽에서 펼쳐져 나오는 느낌)
-function updatePanels(activeCat, fromSide) {
-    Object.values(panelMap).forEach(panel => {
-    panel.classList.remove('active', 'dir-left', 'dir-right');
-    });
-
-    const panel = panelMap[activeCat];
-    if (!panel) return;
-
-    // 방향 정보 세팅
-    if (fromSide === 'left') {
-    panel.classList.add('dir-left');
-    } else {
-    panel.classList.add('dir-right');
+    /* ======================= header scroll ======================= */
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
     }
 
-    // 리플로우 한 번 줘서 트랜지션 확실히 태우기
-    void panel.offsetWidth;
+    /* ======================= main-Swiper ========================= */
+    const mainSwiperEl = document.querySelector('#main_view');
+    if (mainSwiperEl && typeof Swiper !== 'undefined') {
+        new Swiper('#main_view', {
+            autoplay: { delay: 15000 },
+            loop: true,
+            navigation: {
+                nextEl: '#main_view .swiper-button-next',
+                prevEl: '#main_view .swiper-button-prev',
+            },
+            pagination: {
+                el: '#main_view .swiper-pagination',
+                clickable: true,
+            },
+        });
+    }
 
-    panel.classList.add('active');
-}
+    /* ======================= best-Swiper 공통 ==================== */
+    function initBestSwiper(id) {
+        const selector = `#${id}`;
+        const el = document.querySelector(selector);
+        if (!el || typeof Swiper === 'undefined') return;
 
-function setActiveCategory(nextCat, fromSide) {
-    if (!categoryOrder.includes(nextCat)) return;
-    currentCat = nextCat;
+        new Swiper(selector, {
+            spaceBetween: 20,
+            slidesPerView: 3.3,
+            slidesPerGroup: 1,
+            navigation: {
+                nextEl: `${selector} .swiper-button-next`,
+                prevEl: `${selector} .swiper-button-prev`,
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 3.3,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                650: {
+                    slidesPerView: 2.8,
+                },
+                520: {
+                    slidesPerView: 2.5,
+                },
+                440: {
+                    slidesPerView: 1.7,
+                },
+                0: {
+                    slidesPerView: 1.3,
+                },
+            },
+        });
+    }
 
-    updateTabs(currentCat);
-    updatePanels(currentCat, fromSide || 'right');
-}
+    // 각각 초기화
+    initBestSwiper('best_eyes_swiper');
+    initBestSwiper('best_lips_swiper');
+    initBestSwiper('best_face_swiper');
+    initBestSwiper('best_essentials_swiper');
 
-// 탭 클릭 이벤트
-Object.entries(tabMap).forEach(([cat, tab]) => {
-    tab.addEventListener('click', () => {
-    // 이 탭이 어느 쪽 컨테이너에 있는지 보고 방향 결정
-    const fromSide = tab.closest('.nc_tabs--left') ? 'left' : 'right';
-    setActiveCategory(cat, fromSide);
-    });
-});
+    /* ======================= best 탭 ============================= */
+    const tabButtons = document.querySelectorAll('.best_category button');
+    const panels = document.querySelectorAll('.best_panel');
 
-// 초기 상태: lip-tint가 활성, 오른쪽에서 펼쳐지는 느낌으로 시작
-setActiveCategory('lip-tint', 'right');
-});
-/* ====================================celeb============================================== */
-const celebSwiper = new Swiper("#celeb_swiper", {
-    autoplay:{delay:6000},
-    slidesPerView:5,
-    centeredSlides: true,
-    spaceBetween: 0,
-    loop:true,
-    initialSlide:0,
-    navigation: {
-        nextEl: "#celeb_swiper .swiper-button-next",
-        prevEl: "#celeb_swiper .swiper-button-prev"
-    },
-    breakpoints : {
-        1440: {
-            slidesPerView:5
-        },
-        1200: {
-            slidesPerView:4.2
-        },
-        768: {
-            slidesPerView:3.4
-        },
-        520: {
-            slidesPerView:2.2
-        },
-        0: {
-            slidesPerView:1.5
+    if (tabButtons.length && panels.length) {
+        tabButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.bestTab; // eyes / lips / face / essentials
+
+                // 탭 active
+                tabButtons.forEach((b) => b.parentElement.classList.remove('active'));
+                btn.parentElement.classList.add('active');
+
+                // 패널 on/off
+                panels.forEach((panel) => {
+                    const isTarget = panel.dataset.bestPanel === target;
+                    panel.classList.toggle('active', isTarget);
+                });
+            });
+        });
+    }
+
+    /* ==================== new collection ========================= */
+    const section = document.querySelector('#new_collection');
+    if (section) {
+        const leftTabsWrap = section.querySelector('.nc_tabs--left');
+        const rightTabsWrap = section.querySelector('.nc_tabs--right');
+        const panelsNc = Array.from(section.querySelectorAll('.nc_panels .nc-panel'));
+        const allTabs = Array.from(section.querySelectorAll('.nc_tabs .nc-tab'));
+
+        const categoryOrder = ['lip-tint', 'lipstick', 'cheek', 'eyeshadow', 'powder'];
+
+        const tabMap = {};
+        const panelMap = {};
+
+        categoryOrder.forEach((cat) => {
+            const tab = allTabs.find((t) => t.dataset.cat === cat);
+            const panel = panelsNc.find((p) => p.dataset.cat === cat);
+            if (tab) tabMap[cat] = tab;
+            if (panel) panelMap[cat] = panel;
+        });
+
+        let currentCat = 'lip-tint';
+
+        function updateTabs(activeCat) {
+            const activeIndex = categoryOrder.indexOf(activeCat);
+
+            categoryOrder.forEach((cat, idx) => {
+                const tab = tabMap[cat];
+                if (!tab) return;
+
+                tab.classList.remove('on');
+
+                if (idx < activeIndex) {
+                    leftTabsWrap && leftTabsWrap.appendChild(tab);
+                } else if (idx > activeIndex) {
+                    rightTabsWrap && rightTabsWrap.appendChild(tab);
+                }
+                // active 본인은 위치 고정, 마지막에 .on만 붙임
+            });
+
+            const activeTab = tabMap[activeCat];
+            if (activeTab) {
+                activeTab.classList.add('on');
+            }
+        }
+
+        function updatePanels(activeCat, fromSide) {
+            Object.values(panelMap).forEach((panel) => {
+                panel.classList.remove('active', 'dir-left', 'dir-right');
+            });
+
+            const panel = panelMap[activeCat];
+            if (!panel) return;
+
+            if (fromSide === 'left') {
+                panel.classList.add('dir-left');
+            } else {
+                panel.classList.add('dir-right');
+            }
+
+            void panel.offsetWidth; // 리플로우
+
+            panel.classList.add('active');
+        }
+
+        function setActiveCategory(nextCat, fromSide) {
+            if (!categoryOrder.includes(nextCat)) return;
+            currentCat = nextCat;
+
+            updateTabs(currentCat);
+            updatePanels(currentCat, fromSide || 'right');
+        }
+
+        Object.entries(tabMap).forEach(([cat, tab]) => {
+            tab.addEventListener('click', () => {
+                const fromSide = tab.closest('.nc_tabs--left') ? 'left' : 'right';
+                setActiveCategory(cat, fromSide);
+            });
+        });
+
+        // 초기 상태
+        setActiveCategory('lip-tint', 'right');
+    }
+
+    /* ==================== celeb Swiper =========================== */
+    let celebSwiper = null;
+    const celebSwiperRoot = document.querySelector('#celeb_swiper');
+
+    if (celebSwiperRoot && typeof Swiper !== 'undefined') {
+        celebSwiper = new Swiper('#celeb_swiper', {
+            autoplay: { delay: 6000 },
+            slidesPerView: 5,
+            centeredSlides: true,
+            spaceBetween: 0,
+            loop: true,
+            initialSlide: 0,
+            navigation: {
+                nextEl: '#celeb_swiper .swiper-button-next',
+                prevEl: '#celeb_swiper .swiper-button-prev',
+            },
+            breakpoints: {
+                1440: {
+                    slidesPerView: 5,
+                },
+                1200: {
+                    slidesPerView: 4.2,
+                },
+                768: {
+                    slidesPerView: 3.4,
+                },
+                520: {
+                    slidesPerView: 2.2,
+                },
+                0: {
+                    slidesPerView: 1.5,
+                },
+            },
+        });
+    }
+
+    /* ==================== celeb 동영상 컨트롤 ==================== */
+    if (celebSwiperRoot) {
+        const slides = celebSwiperRoot.querySelectorAll('.swiper-slide');
+        const videos = celebSwiperRoot.querySelectorAll('video');
+
+        function pauseAllVideos() {
+            videos.forEach((video) => {
+                const slide = video.closest('.swiper-slide');
+                if (!slide) return;
+
+                const thumb = slide.querySelector('.celeb_thumb');
+                const playBtn = slide.querySelector('.play');
+                const iconPlay = playBtn && playBtn.querySelector('.icon_play_btn');
+                const iconPause = playBtn && playBtn.querySelector('.icon_pause_btn');
+
+                video.pause();
+
+                if (thumb) thumb.style.display = '';
+
+                if (playBtn) playBtn.style.opacity = '';
+                if (iconPlay) iconPlay.style.opacity = '';
+                if (iconPause) iconPause.style.opacity = '';
+
+                slide.classList.remove('is-playing');
+            });
+
+            if (celebSwiper) {
+                celebSwiper.allowTouchMove = true;
+                celebSwiper.autoplay && celebSwiper.autoplay.start();
+            }
+        }
+
+        slides.forEach((slide) => {
+            const videoWrap = slide.querySelector('.video_wrap');
+            const video = slide.querySelector('video');
+            const thumb = slide.querySelector('.celeb_thumb');
+            const playBtn = slide.querySelector('.play');
+            const soundBtn = slide.querySelector('.sound');
+            const iconPlay = playBtn && playBtn.querySelector('.icon_play_btn');
+            const iconPause = playBtn && playBtn.querySelector('.icon_pause_btn');
+            const iconSoundOn = soundBtn && soundBtn.querySelector('.icon_sound_on');
+            const iconSoundOff = soundBtn && soundBtn.querySelector('.icon_sound_off');
+
+            if (!videoWrap || !video || !thumb || !playBtn) return;
+
+            let pauseHintTimer = null;
+
+            function showPauseHint() {
+                if (video.paused) return;
+
+                playBtn.style.opacity = 1;
+                if (iconPlay) iconPlay.style.opacity = 0;
+                if (iconPause) iconPause.style.opacity = 1;
+
+                if (pauseHintTimer) clearTimeout(pauseHintTimer);
+                pauseHintTimer = setTimeout(() => {
+                    if (!video.paused) {
+                        playBtn.style.opacity = 0;
+                    }
+                }, 300);
+            }
+
+            function playVideo() {
+                pauseAllVideos();
+
+                thumb.style.display = 'none';
+                slide.classList.add('is-playing');
+
+                video.play().catch(() => {});
+
+                playBtn.style.opacity = 0;
+                if (iconPlay) iconPlay.style.opacity = 0;
+                if (iconPause) iconPause.style.opacity = 1;
+
+                if (celebSwiper) {
+                    celebSwiper.autoplay && celebSwiper.autoplay.stop();
+                    celebSwiper.allowTouchMove = false;
+                }
+            }
+
+            function pauseVideo() {
+                video.pause();
+                slide.classList.remove('is-playing');
+
+                playBtn.style.opacity = '';
+                if (iconPlay) iconPlay.style.opacity = '';
+                if (iconPause) iconPause.style.opacity = '';
+
+                if (celebSwiper) {
+                    celebSwiper.allowTouchMove = true;
+                    celebSwiper.autoplay && celebSwiper.autoplay.start();
+                }
+            }
+
+            // 중앙 재생/정지 버튼
+            playBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (video.paused) {
+                    playVideo();
+                } else {
+                    pauseVideo();
+                }
+            });
+
+            // 영상 영역 클릭 (play/sound 제외)
+            videoWrap.addEventListener('click', (e) => {
+                if (e.target.closest('.sound') || e.target.closest('.play')) return;
+
+                if (video.paused) {
+                    playVideo();
+                } else {
+                    pauseVideo();
+                }
+            });
+
+            // 마우스/터치 → 잠깐 pause 아이콘 표시
+            videoWrap.addEventListener('mousemove', showPauseHint);
+            videoWrap.addEventListener('touchstart', showPauseHint, { passive: true });
+
+            // 사운드 버튼
+            if (soundBtn) {
+                soundBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    video.muted = !video.muted;
+
+                    if (iconSoundOn && iconSoundOff) {
+                        if (video.muted) {
+                            iconSoundOn.style.opacity = 0;
+                            iconSoundOff.style.opacity = 1;
+                        } else {
+                            iconSoundOn.style.opacity = 1;
+                            iconSoundOff.style.opacity = 0;
+                        }
+                    }
+                });
+            }
+
+            // 영상 끝났을 때
+            video.addEventListener('ended', () => {
+                pauseVideo();
+                thumb.style.display = '';
+                // video.currentTime = 0;
+            });
+        });
+
+        if (celebSwiper) {
+            celebSwiper.on('slideChange', () => {
+                pauseAllVideos();
+            });
         }
     }
-})
-document.addEventListener('DOMContentLoaded', function () {
-const celebSwiperEl = document.querySelector('#celeb_swiper');
-if (!celebSwiperEl) return;
 
-const slides = celebSwiperEl.querySelectorAll('.swiper-slide');
-const videos = celebSwiperEl.querySelectorAll('video');
+    /* ================= a 태그 새로고침 막기 ====================== */
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
 
-// 모든 영상/버튼/썸네일 초기화
-function pauseAllVideos() {
-    videos.forEach(video => {
-    const slide = video.closest('.swiper-slide');
-    if (!slide) return;
+        // 진짜 이동해야 하는 링크는 .real-link 클래스 붙여두기
+        if (link.classList.contains('real-link')) return;
 
-    const thumb = slide.querySelector('.celeb_thumb');
-    const playBtn = slide.querySelector('.play');
-    const iconPlay = playBtn && playBtn.querySelector('.icon_play_btn');
-    const iconPause = playBtn && playBtn.querySelector('.icon_pause_btn');
-
-    video.pause();
-    // 필요하면 처음으로 되감기
-    // video.currentTime = 0;
-
-    if (thumb) thumb.style.display = '';
-
-    // ❗ inline 스타일을 지워서 CSS 기준으로 돌아가게
-    if (playBtn) playBtn.style.opacity = '';
-    if (iconPlay) iconPlay.style.opacity = '';
-    if (iconPause) iconPause.style.opacity = '';
-
-    slide.classList.remove('is-playing');
+        e.preventDefault();
     });
 
-    // 스와이퍼 자동재생 / 드래그 원복
-    if (typeof celebSwiper !== 'undefined') {
-    celebSwiper.allowTouchMove = true;
-    celebSwiper.autoplay && celebSwiper.autoplay.start();
+    /* ================= 매장 지도 레이어 ========================= */
+    const openMapBtn = document.getElementById('openMapBtn');
+    const mapLayer = document.getElementById('storeMapLayer');
+    const closeMapBtn = document.getElementById('closeMapBtn');
+
+    if (openMapBtn && mapLayer && closeMapBtn) {
+        openMapBtn.addEventListener('click', () => {
+            mapLayer.classList.add('on');
+            document.body.classList.add('no-scroll');
+        });
+
+        closeMapBtn.addEventListener('click', () => {
+            mapLayer.classList.remove('on');
+            document.body.classList.remove('no-scroll');
+        });
+
+        mapLayer.addEventListener('click', (e) => {
+            if (e.target === mapLayer) {
+                mapLayer.classList.remove('on');
+                document.body.classList.remove('no-scroll');
+            }
+        });
     }
-}
-
-slides.forEach(slide => {
-    const videoWrap = slide.querySelector('.video_wrap');
-    const video = slide.querySelector('video');
-    const thumb = slide.querySelector('.celeb_thumb');
-    const playBtn = slide.querySelector('.play');
-    const soundBtn = slide.querySelector('.sound');
-    const iconPlay = playBtn && playBtn.querySelector('.icon_play_btn');
-    const iconPause = playBtn && playBtn.querySelector('.icon_pause_btn');
-    const iconSoundOn = soundBtn && soundBtn.querySelector('.icon_sound_on');
-    const iconSoundOff = soundBtn && soundBtn.querySelector('.icon_sound_off');
-
-    if (!videoWrap || !video || !thumb || !playBtn) return;
-
-    let pauseHintTimer = null;
-
-    // 마우스/터치 시 잠깐 pause 아이콘 보여주기 (0.3초)
-    function showPauseHint() {
-    if (video.paused) return;
-
-    playBtn.style.opacity = 1;
-    if (iconPlay) iconPlay.style.opacity = 0;
-    if (iconPause) iconPause.style.opacity = 1;
-
-    if (pauseHintTimer) clearTimeout(pauseHintTimer);
-    pauseHintTimer = setTimeout(() => {
-        if (!video.paused) {
-        playBtn.style.opacity = 0;
-        }
-    }, 300); // ★ 0.3초
-    }
-
-    function playVideo() {
-    pauseAllVideos(); // 다른 슬라이드 전부 정지
-
-    thumb.style.display = 'none';
-    slide.classList.add('is-playing');
-
-    video.play().catch(() => {});
-
-    // 현재 슬라이드의 큰 ▶ 버튼 숨기고, pause 아이콘 상태로
-    playBtn.style.opacity = 0;
-    if (iconPlay) iconPlay.style.opacity = 0;
-    if (iconPause) iconPause.style.opacity = 1;
-
-    if (typeof celebSwiper !== 'undefined') {
-        celebSwiper.autoplay && celebSwiper.autoplay.stop();
-        celebSwiper.allowTouchMove = false;
-    }
-    }
-
-    function pauseVideo() {
-    video.pause();
-    slide.classList.remove('is-playing');
-
-    // ▶ 버튼 다시 CSS 기준으로
-    playBtn.style.opacity = '';
-    if (iconPlay) iconPlay.style.opacity = '';
-    if (iconPause) iconPause.style.opacity = '';
-
-    if (typeof celebSwiper !== 'undefined') {
-        celebSwiper.allowTouchMove = true;
-        celebSwiper.autoplay && celebSwiper.autoplay.start();
-    }
-    }
-
-    // 중앙 재생/일시정지 버튼 클릭
-    playBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (video.paused) {
-        playVideo();
-    } else {
-        pauseVideo();
-    }
-    });
-
-    // 비디오 영역 아무 데나 클릭 → 토글 (sound/play 버튼은 제외)
-    videoWrap.addEventListener('click', (e) => {
-    if (e.target.closest('.sound') || e.target.closest('.play')) return;
-
-    if (video.paused) {
-        playVideo();
-    } else {
-        pauseVideo();
-    }
-    });
-
-    // 마우스/터치 → 잠깐 pause 아이콘 표시 (0.3초)
-    videoWrap.addEventListener('mousemove', showPauseHint);
-    videoWrap.addEventListener('touchstart', showPauseHint, { passive: true });
-
-    // 사운드 버튼 토글
-    if (soundBtn) {
-    soundBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        video.muted = !video.muted;
-
-        if (iconSoundOn && iconSoundOff) {
-        if (video.muted) {
-            iconSoundOn.style.opacity = 0;
-            iconSoundOff.style.opacity = 1;
-        } else {
-            iconSoundOn.style.opacity = 1;
-            iconSoundOff.style.opacity = 0;
-        }
-        }
-    });
-    }
-
-    // 영상 끝나면 상태 초기화
-    video.addEventListener('ended', () => {
-    pauseVideo();
-    thumb.style.display = '';
-    // video.currentTime = 0; // 필요하면 주석 해제
-    });
 });
-
-// 슬라이드 바뀌면 전부 정지
-if (typeof celebSwiper !== 'undefined') {
-    celebSwiper.on('slideChange', () => {
-    pauseAllVideos();
-    });
-}
-});
-// a태그 새로고침 막기
-document.addEventListener("click", (e) => {
-    const link = e.target.closest("a");
-    if (!link) return;
-
-// 예외 (진짜 이동하는 링크)
-if (link.classList.contains("real-link")) return;
-
-e.preventDefault();
-});
-const openMapBtn  = document.getElementById('openMapBtn');
-const mapLayer    = document.getElementById('storeMapLayer');
-const closeMapBtn = document.getElementById('closeMapBtn');
-
-if (openMapBtn && mapLayer && closeMapBtn) {
-// 열기
-openMapBtn.addEventListener('click', () => {
-mapLayer.classList.add('on');
-document.body.classList.add('no-scroll'); 
-});
-
-// 닫기 버튼
-closeMapBtn.addEventListener('click', () => {
-mapLayer.classList.remove('on');
-document.body.classList.remove('no-scroll');
-});
-
-// 어두운 배경 클릭해도 닫기
-mapLayer.addEventListener('click', (e) => {
-if (e.target === mapLayer) {
-    mapLayer.classList.remove('on');
-    document.body.classList.remove('no-scroll');
-}
-});
-}
