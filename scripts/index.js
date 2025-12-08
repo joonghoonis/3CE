@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    /* ======================= header scroll ======================= */
+    // header scroll
     const header = document.querySelector('header');
     if (header) {
         window.addEventListener('scroll', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ======================= main-Swiper ========================= */
+    // main swiper
     const mainSwiperEl = document.querySelector('#main_view');
     if (mainSwiperEl && typeof Swiper !== 'undefined') {
         new Swiper('#main_view', {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ======================= best-Swiper 공통 ==================== */
+    // best swiper 공통
     function initBestSwiper(id) {
         const selector = `#${id}`;
         const el = document.querySelector(selector);
@@ -43,48 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 prevEl: `${selector} .swiper-button-prev`,
             },
             breakpoints: {
-                1024: {
-                    slidesPerView: 3.3,
-                },
-                768: {
-                    slidesPerView: 3,
-                },
-                650: {
-                    slidesPerView: 2.8,
-                },
-                520: {
-                    slidesPerView: 2.5,
-                },
-                440: {
-                    slidesPerView: 1.7,
-                },
-                0: {
-                    slidesPerView: 1.3,
-                },
+                1024: { slidesPerView: 3.3 },
+                768: { slidesPerView: 3 },
+                650: { slidesPerView: 2.8 },
+                520: { slidesPerView: 2.5 },
+                440: { slidesPerView: 1.7 },
+                0:   { slidesPerView: 1.3 },
             },
         });
     }
 
-    // 각각 초기화
     initBestSwiper('best_eyes_swiper');
     initBestSwiper('best_lips_swiper');
     initBestSwiper('best_face_swiper');
     initBestSwiper('best_essentials_swiper');
 
-    /* ======================= best 탭 ============================= */
+    // best 탭
     const tabButtons = document.querySelectorAll('.best_category button');
     const panels = document.querySelectorAll('.best_panel');
 
     if (tabButtons.length && panels.length) {
         tabButtons.forEach((btn) => {
             btn.addEventListener('click', () => {
-                const target = btn.dataset.bestTab; // eyes / lips / face / essentials
+                const target = btn.dataset.bestTab;
 
-                // 탭 active
                 tabButtons.forEach((b) => b.parentElement.classList.remove('active'));
                 btn.parentElement.classList.add('active');
 
-                // 패널 on/off
                 panels.forEach((panel) => {
                     const isTarget = panel.dataset.bestPanel === target;
                     panel.classList.toggle('active', isTarget);
@@ -93,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==================== new collection ========================= */
+    // new collection
     const section = document.querySelector('#new_collection');
     if (section) {
         const leftTabsWrap = section.querySelector('.nc_tabs--left');
@@ -129,7 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (idx > activeIndex) {
                     rightTabsWrap && rightTabsWrap.appendChild(tab);
                 }
-                // active 본인은 위치 고정, 마지막에 .on만 붙임
             });
 
             const activeTab = tabMap[activeCat];
@@ -152,8 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 panel.classList.add('dir-right');
             }
 
-            void panel.offsetWidth; // 리플로우
-
+            void panel.offsetWidth;
             panel.classList.add('active');
         }
 
@@ -172,11 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 초기 상태
         setActiveCategory('lip-tint', 'right');
     }
 
-    /* ==================== celeb Swiper =========================== */
+    // celeb swiper
     let celebSwiper = null;
     const celebSwiperRoot = document.querySelector('#celeb_swiper');
 
@@ -193,26 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 prevEl: '#celeb_swiper .swiper-button-prev',
             },
             breakpoints: {
-                1440: {
-                    slidesPerView: 5,
-                },
-                1200: {
-                    slidesPerView: 4.2,
-                },
-                768: {
-                    slidesPerView: 3.4,
-                },
-                520: {
-                    slidesPerView: 2.2,
-                },
-                0: {
-                    slidesPerView: 1.5,
-                },
+                1440: { slidesPerView: 5 },
+                1200: { slidesPerView: 4.2 },
+                768:  { slidesPerView: 3.4 },
+                520:  { slidesPerView: 2.2 },
+                0:    { slidesPerView: 1.5 },
             },
         });
     }
 
-    /* ==================== celeb 동영상 컨트롤 ==================== */
+    // celeb 동영상 컨트롤
     if (celebSwiperRoot) {
         const slides = celebSwiperRoot.querySelectorAll('.swiper-slide');
         const videos = celebSwiperRoot.querySelectorAll('video');
@@ -230,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 video.pause();
 
                 if (thumb) thumb.style.display = '';
-
                 if (playBtn) playBtn.style.opacity = '';
                 if (iconPlay) iconPlay.style.opacity = '';
                 if (iconPause) iconPause.style.opacity = '';
@@ -306,7 +277,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // 중앙 재생/정지 버튼
             playBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 if (video.paused) {
@@ -316,7 +286,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // 영상 영역 클릭 (play/sound 제외)
             videoWrap.addEventListener('click', (e) => {
                 if (e.target.closest('.sound') || e.target.closest('.play')) return;
 
@@ -327,11 +296,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // 마우스/터치 → 잠깐 pause 아이콘 표시
             videoWrap.addEventListener('mousemove', showPauseHint);
             videoWrap.addEventListener('touchstart', showPauseHint, { passive: true });
 
-            // 사운드 버튼
             if (soundBtn) {
                 soundBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -349,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // 영상 끝났을 때
             video.addEventListener('ended', () => {
                 pauseVideo();
                 thumb.style.display = '';
@@ -364,37 +330,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /* ================= a 태그 새로고침 막기 ====================== */
+    // a 태그 기본동작 막기 (.real-link만 예외)
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a');
         if (!link) return;
-
-        // 진짜 이동해야 하는 링크는 .real-link 클래스 붙여두기
         if (link.classList.contains('real-link')) return;
 
         e.preventDefault();
     });
 
-    /* ================= 매장 지도 레이어 ========================= */
+    // 매장 지도 레이어
     const openMapBtn = document.getElementById('openMapBtn');
     const mapLayer = document.getElementById('storeMapLayer');
     const closeMapBtn = document.getElementById('closeMapBtn');
 
     if (openMapBtn && mapLayer && closeMapBtn) {
+        const hideMap = () => {
+            mapLayer.classList.remove('on');
+            document.body.classList.remove('no-scroll');
+        };
+
         openMapBtn.addEventListener('click', () => {
             mapLayer.classList.add('on');
             document.body.classList.add('no-scroll');
         });
 
-        closeMapBtn.addEventListener('click', () => {
-            mapLayer.classList.remove('on');
-            document.body.classList.remove('no-scroll');
-        });
+        closeMapBtn.addEventListener('click', hideMap);
 
         mapLayer.addEventListener('click', (e) => {
             if (e.target === mapLayer) {
-                mapLayer.classList.remove('on');
-                document.body.classList.remove('no-scroll');
+                hideMap();
             }
         });
     }
